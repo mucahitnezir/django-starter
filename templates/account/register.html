@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">Kayıt Ol</div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" class="btn btn-success" value="Kayıt Ol">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
