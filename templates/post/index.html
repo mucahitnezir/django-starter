@@ -1,0 +1,17 @@
+{% extends 'layout/post.html' %}
+
+{% block postContent %}
+
+    {% if posts|length > 0 %}
+        <div class="cards">
+            {% for post in posts %}
+                {% include 'post/partials/post-list-item.html' with post=post %}
+            {% endfor %}
+        </div>
+
+        {% include 'post/partials/pagination.html' %}
+    {% else %}
+        <div class="bg-secondary p-3 rounded text-white">Hiçbir blog yazısı bulunamadı</div>
+    {% endif %}
+
+{% endblock %}

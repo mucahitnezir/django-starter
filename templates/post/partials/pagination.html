@@ -1,0 +1,31 @@
+<ul class="pagination justify-content-center">
+    {% if posts.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+               tabindex="-1">First</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link"
+               href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+               tabindex="-1">Previous</a>
+        </li>
+    {% endif %}
+
+    <li class="page-item active">
+        <a class="page-link" href="javascript:void(0)">{{ posts.number }} of {{ posts.paginator.num_pages }}<span
+                class="sr-only">(current)</span></a>
+    </li>
+
+    {% if posts.has_next %}
+        <li class="page-item">
+            <a class="page-link"
+               href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+               tabindex="-1">Next</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link"
+               href="?page={{ posts.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+               tabindex="-1">Last</a>
+        </li>
+    {% endif %}
+</ul>

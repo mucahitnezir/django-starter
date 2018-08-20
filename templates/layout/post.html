@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+    {% block beforeGrid %}
+    {% endblock %}
+
+    <div class="row">
+        <div class="col-md-8">
+            {% block postContent %}
+            {% endblock %}
+        </div>
+        <div class="col-md-4">
+            <div class="ps-20">
+                <!--Categories-->
+                {% if not hide_categories %}
+                    <div class="list-group">
+                        {% for cat in categories %}
+                            <a href="{{ cat.get_absolute_url }}"
+                               class="list-group-item {% if cat.id == category.id %}active{% endif %} list-group-item-action d-flex justify-content-between align-items-center">
+                                {{ cat.name }}
+                                <span class="badge badge-primary badge-pill">{{ cat.get_posts_count }}</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

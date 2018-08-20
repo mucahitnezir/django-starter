@@ -1,0 +1,26 @@
+{% extends 'layout/post.html' %}
+
+{% block beforeGrid %}
+    <div class="bg-info p-3 text-white mb-4 rounded category-description">
+        <h1 class="h4 {% if not category.description %}mb-0{% endif %}">Kategori: {{ category.name }}</h1>
+        {% if category.description %}
+            <div>{{ category.description|safe }}</div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block postContent %}
+
+    {% if posts|length > 0 %}
+        <div class="cards">
+            {% for post in posts %}
+                {% include 'post/partials/post-list-item.html' %}
+            {% endfor %}
+        </div>
+
+        {% include 'post/partials/pagination.html' %}
+    {% else %}
+        <div class="bg-secondary p-3 rounded text-white">Hiçbir blog yazısı bulunamadı</div>
+    {% endif %}
+
+{% endblock %}

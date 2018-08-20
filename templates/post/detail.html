@@ -1,0 +1,30 @@
+{% extends 'layout/post.html' %}
+
+{% block beforeGrid %}
+    {% if post.image %}
+        <div class="mb-4">
+            <img class="card-img-top" src="{{ post.image.url }}">
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block postContent %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}
+                <small>{{ post.publishedAt|timesince }} önce</small>
+                <small>yazar: {{ post.user.get_full_name }}</small>
+            </h5>
+            <p class="card-text">{{ post.content|safe }}</p>
+        </div>
+        {% if request.user.is_authenticated %}
+            <div class="card-footer">
+                <a href="{{ post.get_update_url }}" class="btn btn-success">Güncelle</a>
+                <a href="{{ post.get_delete_url }}" class="btn btn-danger">Sil</a>
+            </div>
+        {% endif %}
+    </div>
+
+    {% include 'post/partials/comment-list.html' %}
+    {% include 'post/partials/comment-form.html' %}
+{% endblock %}
