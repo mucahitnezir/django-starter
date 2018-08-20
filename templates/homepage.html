@@ -1,0 +1,12 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <p class="bg-info text-white p-3 rounded">Hello, {{ request.user.get_full_name }}</p>
+    {% else %}
+        <p class="bg-primary text-white p-3 rounded">
+            Hello there, do you want to <a href="{% url 'account:register' %}" class="alert-link text-light">signup</a>
+            or <a href="{% url 'account:login' %}" class="alert-link text-light">login</a>?
+        </p>
+    {% endif %}
+{% endblock %}

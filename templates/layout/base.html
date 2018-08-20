@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if title %}{{ title }}{% else %}Django Dersleri{% endif %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+{% include 'layout/partials/header.html' %}
+
+{% include 'layout/partials/messages.html' %}
+
+<div class="container mb-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

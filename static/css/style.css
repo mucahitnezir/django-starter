@@ -1,0 +1,20 @@
+body {
+    background-color: #E6E6E6;
+}
+
+.mh-150 {
+   max-height: 150px;
+}
+
+.of-cover {
+    object-fit: cover;
+}
+
+.ps-20 {
+    position: sticky;
+    top: 20px;
+}
+
+.category-description > div p:last-child {
+    margin-bottom: 0px;
+}
