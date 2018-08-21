@@ -41,6 +41,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-publishedAt']
+        verbose_name = 'Blog Yazısı'
+        verbose_name_plural = 'Blog Yazıları'
 
 
 class Comment(models.Model):
@@ -53,6 +55,8 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-publishedAt']
+        verbose_name = 'Yorum'
+        verbose_name_plural = 'Yorumlar'
 
 
 class Category(models.Model):
@@ -86,3 +90,5 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Kategori'
+        verbose_name_plural = 'Kategoriler'
