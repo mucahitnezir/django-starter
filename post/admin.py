@@ -20,7 +20,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'full_name', 'email_address', 'get_post', 'is_confirmed']
+    list_display = ['id', 'full_name', 'email_address', 'get_post', 'publishedAt', 'is_confirmed']
     list_filter = ['is_confirmed', 'post']
     list_editable = ['is_confirmed']
     search_fields = ['full_name', 'email_address', 'content']

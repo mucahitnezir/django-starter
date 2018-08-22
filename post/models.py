@@ -26,6 +26,9 @@ class Post(models.Model):
     def get_delete_url(self):
         return reverse('post:delete', kwargs={'id': self.id})
 
+    def get_confirmed_comments(self):
+        return self.comments.filter(is_confirmed=True)
+
     def get_unique_slug(self):
         slug = slugify(self.title.replace('ı', 'i'))
         unique_slug = slug
@@ -43,6 +46,7 @@ class Post(models.Model):
         ordering = ['-publishedAt']
         verbose_name = 'Blog Yazısı'
         verbose_name_plural = 'Blog Yazıları'
+        db_table = 'posts'
 
 
 class Comment(models.Model):
@@ -53,10 +57,14 @@ class Comment(models.Model):
     is_confirmed = models.BooleanField(verbose_name='Onay Durumu', default=False)
     publishedAt = models.DateTimeField(verbose_name='Yorum Tarihi', auto_now_add=True)
 
+    def __str__(self):
+        return "{} - {}".format(self.id, self.full_name)
+
     class Meta:
         ordering = ['-publishedAt']
         verbose_name = 'Yorum'
         verbose_name_plural = 'Yorumlar'
+        db_table = 'comments'
 
 
 class Category(models.Model):
@@ -92,3 +100,4 @@ class Category(models.Model):
         ordering = ['name']
         verbose_name = 'Kategori'
         verbose_name_plural = 'Kategoriler'
+        db_table = 'categories'
