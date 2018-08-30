@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, RegisterForm
+from django.contrib.auth.decorators import login_required
+
+from .forms import LoginForm, RegisterForm, EditProfileForm
 
 
 def login_view(request):
@@ -47,3 +49,18 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'Logged out successfully')
     return redirect('account:login')
+
+
+@login_required
+def profile_edit_view(request):
+    form = EditProfileForm(request.POST or None, instance=request.user)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Updated your profile')
+
+    context = {
+        'title': 'Profil Bilgilerini Güncelle',
+        'form': form
+    }
+
+    return render(request, 'account/edit-profile.html', context)

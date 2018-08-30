@@ -47,3 +47,16 @@ class RegisterForm(forms.ModelForm):
             raise forms.ValidationError('Şifreler gönderilmedi')
 
         return password2
+
+
+class EditProfileForm(forms.ModelForm):
+    captcha = ReCaptchaField()
+
+    class Meta:
+        model = User
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'username'
+        ]
