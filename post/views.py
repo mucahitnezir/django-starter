@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect, Http404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 from .models import Post, Category
 from .forms import PostForm, CommentForm
@@ -59,6 +60,7 @@ def post_detail(request, slug):
     return render(request, 'post/detail.html', context)
 
 
+@login_required(login_url='account:login')
 def post_create(request):
     # # First alternative
     # if request.method == 'POST':
@@ -89,6 +91,7 @@ def post_create(request):
     return render(request, 'post/form.html', context)
 
 
+@login_required(login_url='account:login')
 def post_update(request, id):
     post = get_object_or_404(Post, id=id)
     form = PostForm(request.POST or None, request.FILES or None, instance=post)
@@ -104,6 +107,7 @@ def post_update(request, id):
     return render(request, 'post/form.html', context)
 
 
+@login_required(login_url='post:index')
 def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()

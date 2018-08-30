@@ -6,13 +6,14 @@ from .forms import LoginForm, RegisterForm
 
 def login_view(request):
     form = LoginForm(request.POST or None)
+    redirect_url = request.GET.get('next', 'home')
     if form.is_valid():
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         user = authenticate(username=username, password=password)
         login(request, user)
         messages.success(request, 'Logged in successfully')
-        return redirect('home')
+        return redirect(redirect_url)
 
     context = {
         'form': form,
