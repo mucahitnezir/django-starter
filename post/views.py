@@ -4,12 +4,13 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
-from .models import Post, Category
+from .models import Post
 from .forms import PostForm, CommentForm
+from category.models import Category
 
 
 def post_index(request):
-    categories = Category.objects.all()
+    categories = Category.objects.filter(type='post')
     post_list = Post.objects.all()
 
     query = request.GET.get('q')
@@ -115,8 +116,8 @@ def post_delete(request, id):
 
 
 def category_detail(request, slug, id):
-    category = get_object_or_404(Category, id=id, slug=slug)
-    categories = Category.objects.filter()
+    category = get_object_or_404(Category, id=id, slug=slug, type='post')
+    categories = Category.objects.filter(type='post')
     posts = category.posts.all()
     context = {
         'category': category,

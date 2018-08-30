@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Myself
     'post',
+    'category',
     # Third
     'crispy_forms',
     'django_cleanup',
     'ckeditor',
-    'captcha'
+    'captcha',
+    'import_export'
 ]
 
 MIDDLEWARE = [

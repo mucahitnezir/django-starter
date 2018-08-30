@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import Post, Comment, Category
+from .models import Post, Comment
 
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'slug', 'category', 'get_user', 'publishedAt']
     list_display_links = ['id']
-    list_filter = ['publishedAt']
+    list_filter = ['publishedAt', 'category']
     search_fields = ['title', 'content']
     list_editable = ['title']
 
@@ -35,21 +35,5 @@ class CommentAdmin(admin.ModelAdmin):
         model = Comment
 
 
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'slug', 'post_count', 'publishedAt']
-    list_filter = ['publishedAt']
-    list_editable = ['name']
-    search_fields = ['name', 'slug']
-
-    def post_count(self, obj):
-        return len(obj.posts.all())
-
-    post_count.short_description = 'İçerik Sayısı'
-
-    class Meta:
-        model = Category
-
-
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
-admin.site.register(Category, CategoryAdmin)

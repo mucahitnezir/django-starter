@@ -5,7 +5,7 @@ from ckeditor.fields import RichTextField
 
 
 class Post(models.Model):
-    category = models.ForeignKey('post.Category', on_delete=models.CASCADE, verbose_name='Kategori', related_name='posts')
+    category = models.ForeignKey('category.Category', on_delete=models.CASCADE, verbose_name='Kategori', related_name='posts')
     user = models.ForeignKey('auth.User', verbose_name='Yazar', on_delete=models.CASCADE, related_name='posts')
     title = models.CharField(max_length=155, verbose_name='Başlık')
     content = RichTextField(verbose_name='İçerik')
@@ -65,39 +65,3 @@ class Comment(models.Model):
         verbose_name = 'Yorum'
         verbose_name_plural = 'Yorumlar'
         db_table = 'comments'
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=120, verbose_name='Kategori Adı')
-    slug = models.SlugField(unique=True, verbose_name='Slug', editable=False)
-    description = RichTextField(verbose_name='Kategori Açıklaması', null=True, blank=True)
-    meta_description = models.TextField(verbose_name='Meta Description', null=True, blank=True)
-    publishedAt = models.DateTimeField(verbose_name='Oluşturulma Tarihi', auto_now_add=True)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('post:category', kwargs={'slug': self.slug, 'id': self.id})
-
-    def get_posts_count(self):
-        return self.posts.count()
-
-    def get_unique_slug(self):
-        slug = slugify(self.name.replace('ı', 'i'))
-        unique_slug = slug
-        counter = 1
-        while Category.objects.filter(slug=unique_slug).exists():
-            unique_slug = "{}-{}".format(unique_slug, counter)
-            counter += 1
-        return unique_slug
-
-    def save(self, *args, **kwargs):
-        self.slug = self.get_unique_slug()
-        return super(Category, self).save(*args, **kwargs)
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = 'Kategori'
-        verbose_name_plural = 'Kategoriler'
-        db_table = 'categories'
