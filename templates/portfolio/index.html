@@ -16,7 +16,7 @@
 
     <div class="row" id="portfolio-list">
         {% for portfolio in portfolios %}
-            <div class="col-md-4 portfolio-list-item mb-3 {{ portfolio.category.slug }}">
+            <div class="col-md-4 col-sm-6 portfolio-list-item mb-3 {{ portfolio.category.slug }}">
                 {% include 'portfolio/partials/portfolio-list-item.html' %}
             </div>
         {% endfor %}
