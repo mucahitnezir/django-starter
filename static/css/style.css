@@ -12,6 +12,10 @@ body {
     max-height: 150px;
 }
 
+.mb-85 {
+    margin-bottom: 85px;
+}
+
 .of-cover {
     object-fit: cover;
 }
@@ -23,6 +27,10 @@ body {
 
 .category-description > div p:last-child {
     margin-bottom: 0px;
+}
+
+.portfolio-content p:last-child {
+    margin-bottom: 0;
 }
 
 .footer {

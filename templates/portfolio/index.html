@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-center mb-4">
+        <div class="btn-group" role="group" aria-label="First group">
+            {% for category in categories %}
+                <button type="button" class="btn btn-secondary" data-id="{{ category.id }}">{{ category.name }}</button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="card-columns">
+        {% for portfolio in portfolios %}
+            <div class="card">
+                {% if portfolio.image %}
+                    <a href="{{ portfolio.get_absolute_url }}">
+                        <img class="card-img-top" src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
+                    </a>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ portfolio.title }}</h5>
+                    <p class="card-text">{{ portfolio.category.name }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

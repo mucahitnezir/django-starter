@@ -1,0 +1,57 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+    <div id="portfolio-detail" class="mb-85">
+        <div class="bg-info p-3 text-white mb-4 rounded category-description">
+            <h1 class="h4 {% if not portfolio.short_description %}mb-0{% endif %}">{{ portfolio.title }}
+                <small>{{ portfolio.category.name }}</small>
+            </h1>
+            {% if portfolio.short_description %}
+                <div>{{ portfolio.short_description }}</div>
+            {% endif %}
+        </div>
+
+        <div class="row mb-4 clearfix">
+            <div class="col-md-8">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Önceki</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Sonraki</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="table-responsive bg-white">
+                    <table class="table table-bordered table-striped mb-0">
+                        <tr>
+                            <th>Kategori</th>
+                            <td>{{ portfolio.category.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Yayın Tarihi</th>
+                            <td>{{ portfolio.publishedAt }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-content bg-white border border-info p-3 mb-5">
+            {{ portfolio.content|safe }}
+        </div>
+    </div>
+
+{% endblock %}

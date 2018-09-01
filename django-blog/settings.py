@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # Myself
     'post',
     'category',
+    'portfolio',
     # Third
     'crispy_forms',
     'django_cleanup',
