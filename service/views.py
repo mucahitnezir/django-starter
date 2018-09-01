@@ -14,6 +14,8 @@ def service_index(request):
 def service_detail(request, slug):
     service = get_object_or_404(Service, slug=slug)
     context = {
-        'service': service
+        'service': service,
+        'title': service.title,
+        'meta_description': service.meta_description
     }
     return render(request, 'service/detail.html', context)
