@@ -1,0 +1,21 @@
+{
+  "name": "django-blog",
+  "homepage": "https://github.com/mucahitnezir/django-blog",
+  "authors": [
+    "Mücahit Nezir <mucahitnezir@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.3"
+  }
+}

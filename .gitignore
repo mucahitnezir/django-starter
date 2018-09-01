@@ -45,6 +45,7 @@ media
 venv
 staticfiles
 .DS_Store
+bower_components/
 
 **/migrations/*
 !**/migrations/__init__.py
