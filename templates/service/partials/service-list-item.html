@@ -1,0 +1,9 @@
+<div class="service-list-item text-center">
+    <a href="{{ service.get_absolute_url }}">
+        <div class="img-wrapper rounded-circle mx-auto mb-3">
+            <img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-100">
+        </div>
+    </a>
+    <h3 class="h5">{{ service.title }}</h3>
+    <p>{{ service.short_description }}</p>
+</div>

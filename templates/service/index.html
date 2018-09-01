@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+    <div class="bg-info p-3 text-white text-center mb-5 rounded">
+        <h1 class="h4 mb-0">Hizmet Listesi</h1>
+    </div>
+
+    <div class="mb-85">
+        {% for category in categories %}
+            <div class="mb-5">
+                <!--Category Title-->
+                <h2 class="h3 text-center mb-4">{{ category.name }}</h2>
+                <!--Services-->
+                <div class="row">
+                    {% for service in category.services.all %}
+                        <div class="col-md-3 col-sm-6">
+                            {% include 'service/partials/service-list-item.html' %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

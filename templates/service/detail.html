@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+    <div id="service-detail" class="mb-85">
+        <div class="bg-info p-3 text-white mb-4 rounded category-description">
+            <h1 class="h4 {% if not service.short_description %}mb-0{% endif %}">{{ service.title }}
+                <small>{{ service.category.name }}</small>
+            </h1>
+            {% if service.short_description %}
+                <div>{{ service.short_description }}</div>
+            {% endif %}
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-md-4">
+                <div class="p-3 mb-4 bg-white rounded">
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-100">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="service-content">
+                    {{ service.content|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
