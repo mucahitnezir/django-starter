@@ -4,6 +4,12 @@
 
 {% block content %}
 
+    <!--Title-->
+    <div class="bg-info p-3 text-white text-center mb-4 rounded">
+        <h1 class="h4 mb-0">Portfolyo</h1>
+    </div>
+
+    <!--Categories-->
     <div class="d-flex justify-content-center mb-4">
         <div id="portfolio-filter-buttons" class="btn-group" role="group">
             <button type="button" class="btn btn-secondary" data-filter="*">Tümü</button>
@@ -14,6 +20,7 @@
         </div>
     </div>
 
+    <!-- Portfolio items -->
     <div class="row" id="portfolio-list">
         {% for portfolio in portfolios %}
             <div class="col-md-4 col-sm-6 portfolio-list-item mb-3 {{ portfolio.category.slug }}">

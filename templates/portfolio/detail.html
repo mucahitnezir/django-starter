@@ -2,7 +2,8 @@
 
 {% block content %}
 
-    <div id="portfolio-detail" class="mb-85">
+    <div id="portfolio-detail">
+        <!--Title-->
         <div class="bg-info p-3 text-white mb-4 rounded category-description">
             <h1 class="h4 {% if not portfolio.short_description %}mb-0{% endif %}">{{ portfolio.title }}
                 <small>{{ portfolio.category.name }}</small>
@@ -12,6 +13,7 @@
             {% endif %}
         </div>
 
+        <!--Gallery and Detail Info-->
         <div class="row mb-4 clearfix">
             <div class="col-md-8">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -49,7 +51,8 @@
             </div>
         </div>
 
-        <div class="portfolio-content bg-white border border-info p-3 mb-5">
+        <!--Content-->
+        <div class="portfolio-content bg-white border border-info p-3">
             {{ portfolio.content|safe }}
         </div>
     </div>

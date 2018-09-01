@@ -10,8 +10,15 @@
             {% block postContent %}
             {% endblock %}
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4">
             <div class="ps-20">
+                <!--Search Box-->
+                <form class="d-flex mb-3" method="GET" action="{% url 'post:index' %}">
+                    <input class="form-control flex-grow-1 rounded-0" type="search" placeholder="Makale & Yazar & Kategori Ara" name="q"
+                           value="{{ request.GET.q }}">
+                    <button class="btn btn-success rounded-0" type="submit">Ara</button>
+                </form>
+
                 <!--Categories-->
                 {% if not hide_categories %}
                     <div class="list-group">
