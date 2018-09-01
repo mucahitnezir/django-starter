@@ -1,0 +1,11 @@
+<div class="card">
+    {% if portfolio.image %}
+        <a href="{{ portfolio.get_absolute_url }}">
+            <img class="card-img-top" src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
+        </a>
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{ portfolio.title }}</h5>
+        <p class="card-text">{{ portfolio.category.name }}</p>
+    </div>
+</div>

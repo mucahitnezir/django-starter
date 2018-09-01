@@ -1,29 +1,29 @@
 {% extends 'layout/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
     <div class="d-flex justify-content-center mb-4">
-        <div class="btn-group" role="group" aria-label="First group">
+        <div id="portfolio-filter-buttons" class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary" data-filter="*">Tümü</button>
             {% for category in categories %}
-                <button type="button" class="btn btn-secondary" data-id="{{ category.id }}">{{ category.name }}</button>
+                <button type="button" class="btn btn-secondary"
+                        data-filter=".{{ category.slug }}">{{ category.name }}</button>
             {% endfor %}
         </div>
     </div>
 
-    <div class="card-columns">
+    <div class="row" id="portfolio-list">
         {% for portfolio in portfolios %}
-            <div class="card">
-                {% if portfolio.image %}
-                    <a href="{{ portfolio.get_absolute_url }}">
-                        <img class="card-img-top" src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
-                    </a>
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ portfolio.title }}</h5>
-                    <p class="card-text">{{ portfolio.category.name }}</p>
-                </div>
+            <div class="col-md-4 portfolio-list-item mb-3 {{ portfolio.category.slug }}">
+                {% include 'portfolio/partials/portfolio-list-item.html' %}
             </div>
         {% endfor %}
     </div>
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'isotope-layout/dist/isotope.pkgd.min.js' %}"></script>
 {% endblock %}
