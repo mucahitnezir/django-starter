@@ -118,9 +118,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # CRISPY
+# https://django-crispy-forms.readthedocs.io/en/latest/index.html
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # CKEditor
+# https://pypi.org/project/django-ckeditor/
+
 CKEDITOR_CONFIGS = {
     'default': {
         'width': '100%'
