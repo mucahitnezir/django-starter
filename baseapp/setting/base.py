@@ -13,18 +13,13 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'y*gmwp0n9)eg-wzt9nd5#h#ypno@db#lf!itjgmo&6&7-upe3x'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 # Application definition
 # Model oluşturulmayan ugyulamaları eklemeye gerek yok
@@ -59,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django-blog.urls'
+ROOT_URLCONF = 'baseapp.urls'
 
 TEMPLATES = [
     {
@@ -77,17 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django-blog.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+WSGI_APPLICATION = 'baseapp.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -123,13 +108,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'bower_components')
 ]
-# For product
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -143,9 +126,3 @@ CKEDITOR_CONFIGS = {
         'width': '100%'
     }
 }
-
-# RECAPTCHA
-RECAPTCHA_PUBLIC_KEY = '6LcjqmoUAAAAAHQCHCS9CrfkexuQi9JEdmry2dkn'
-RECAPTCHA_PRIVATE_KEY = '6LcjqmoUAAAAAEP82lJFo03P_8mGx5CkPv5boUwq'
-NOCAPTCHA = True
-RECAPTCHA_USE_SSL = False
