@@ -3,7 +3,7 @@ from .models import Setting
 
 
 class SettingAdmin(admin.ModelAdmin):
-    list_display = ['id', 'key', 'description', 'value']
+    list_display = ['id', 'key', 'description', 'admin_list_value', 'updated_at']
     search_fields = ['key', 'value']
 
     class Meta:
