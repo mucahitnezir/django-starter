@@ -3,9 +3,9 @@ from .models import Post, Comment
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'slug', 'category', 'get_user', 'publishedAt']
+    list_display = ['id', 'title', 'slug', 'category', 'get_user', 'published_at']
     list_display_links = ['id']
-    list_filter = ['publishedAt', 'category']
+    list_filter = ['published_at', 'category']
     search_fields = ['title', 'content']
     list_editable = ['title']
 
@@ -20,7 +20,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'full_name', 'email_address', 'get_post', 'publishedAt', 'is_confirmed']
+    list_display = ['id', 'full_name', 'email_address', 'get_post', 'published_at', 'is_confirmed']
     list_filter = ['is_confirmed', 'post']
     list_editable = ['is_confirmed']
     search_fields = ['full_name', 'email_address', 'content']

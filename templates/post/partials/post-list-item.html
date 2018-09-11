@@ -5,7 +5,7 @@
     <div class="card-body">
         <h5 class="card-title">
             {{ post.title }}
-            <small>{{ post.publishedAt|timesince }} önce</small>
+            <small>{{ post.published_at|timesince }} önce</small>
         </h5>
         <p class="card-text">{{ post.content|safe|linebreaks|truncatewords:15 }}</p>
     </div>

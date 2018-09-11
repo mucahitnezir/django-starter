@@ -12,7 +12,7 @@
     <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title">{{ post.title }}
-                <small>{{ post.publishedAt|timesince }} önce</small>
+                <small>{{ post.published_at|timesince }} önce</small>
                 <small>yazar: {{ post.user.get_full_name }}</small>
             </h5>
             <p class="card-text">{{ post.content|safe }}</p>

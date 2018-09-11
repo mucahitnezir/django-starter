@@ -13,10 +13,20 @@ class Service(models.Model):
     meta_description = models.TextField(verbose_name='Meta Açıklama')
     content = RichTextField(verbose_name='Hizmet İçeriği')
     image = models.ImageField(verbose_name='Hizmet Görseli')
-    publishedAt = models.DateTimeField(verbose_name='Yayınlanma Tarihi', auto_now_add=True)
+    published_at = models.DateTimeField(verbose_name='Yayınlanma Tarihi', auto_now_add=True)
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = 'Hizmet'
+        verbose_name_plural = 'Hizmetler'
+        db_table = 'services'
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = self.get_unique_slug()
+        return super(Service, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('service:detail', kwargs={'slug': self.slug})
@@ -29,13 +39,3 @@ class Service(models.Model):
             unique_slug = "{}-{}".format(unique_slug, counter)
             counter += 1
         return unique_slug
-
-    def save(self, *args, **kwargs):
-        self.slug = self.get_unique_slug()
-        return super(Service, self).save(*args, **kwargs)
-
-    class Meta:
-        ordering = ['title']
-        verbose_name = 'Hizmet'
-        verbose_name_plural = 'Hizmetler'
-        db_table = 'services'

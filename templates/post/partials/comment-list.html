@@ -5,7 +5,7 @@
         <div class="card mb-2">
             <div class="card-header">{{ comment.full_name }} - {{ comment.is_confirmed }}</div>
             <div class="card-body">{{ comment.content|linebreaks }}</div>
-            <div class="card-footer">{{ comment.publishedAt|timesince }} önce</div>
+            <div class="card-footer">{{ comment.published_at|timesince }} önce</div>
         </div>
 
     {% endfor %}

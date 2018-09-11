@@ -17,10 +17,20 @@ class Category(models.Model):
     type = models.CharField(max_length=9, verbose_name='Kategori Tipi', choices=CATEGORY_TYPES, default='post')
     description = RichTextField(verbose_name='Kategori Açıklaması', null=True, blank=True)
     meta_description = models.TextField(verbose_name='Meta Description', null=True, blank=True)
-    publishedAt = models.DateTimeField(verbose_name='Oluşturulma Tarihi', auto_now_add=True)
+    published_at = models.DateTimeField(verbose_name='Oluşturulma Tarihi', auto_now_add=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Kategori'
+        verbose_name_plural = 'Kategoriler'
+        db_table = 'categories'
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = self.get_unique_slug()
+        return super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('post:category', kwargs={'slug': self.slug, 'id': self.id})
@@ -36,13 +46,3 @@ class Category(models.Model):
             unique_slug = "{}-{}".format(unique_slug, counter)
             counter += 1
         return unique_slug
-
-    def save(self, *args, **kwargs):
-        self.slug = self.get_unique_slug()
-        return super(Category, self).save(*args, **kwargs)
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = 'Kategori'
-        verbose_name_plural = 'Kategoriler'
-        db_table = 'categories'

@@ -9,12 +9,22 @@ class Post(models.Model):
     user = models.ForeignKey('auth.User', verbose_name='Yazar', on_delete=models.CASCADE, related_name='posts')
     title = models.CharField(max_length=155, verbose_name='Başlık')
     content = RichTextField(verbose_name='İçerik')
-    publishedAt = models.DateTimeField(verbose_name='Yayın Tarihi', auto_now_add=True)
     image = models.ImageField(null=True, blank=True, verbose_name='Resim')
     slug = models.SlugField(unique=True, null=True, blank=True, verbose_name='Slug', editable=False)
+    published_at = models.DateTimeField(verbose_name='Yayın Tarihi', auto_now_add=True)
+
+    class Meta:
+        ordering = ['-published_at']
+        verbose_name = 'Blog Yazısı'
+        verbose_name_plural = 'Blog Yazıları'
+        db_table = 'posts'
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = self.get_unique_slug()
+        return super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         # return "/post/{}".format(self.id)
@@ -38,16 +48,6 @@ class Post(models.Model):
             counter += 1
         return unique_slug
 
-    def save(self, *args, **kwargs):
-        self.slug = self.get_unique_slug()
-        return super(Post, self).save(*args, **kwargs)
-
-    class Meta:
-        ordering = ['-publishedAt']
-        verbose_name = 'Blog Yazısı'
-        verbose_name_plural = 'Blog Yazıları'
-        db_table = 'posts'
-
 
 class Comment(models.Model):
     post = models.ForeignKey('post.Post', related_name='comments', on_delete=models.CASCADE, verbose_name='İçerik')
@@ -55,13 +55,13 @@ class Comment(models.Model):
     email_address = models.CharField(max_length=60, verbose_name='E-Posta Adresi')
     content = models.TextField(verbose_name='Yorum')
     is_confirmed = models.BooleanField(verbose_name='Onay Durumu', default=False)
-    publishedAt = models.DateTimeField(verbose_name='Yorum Tarihi', auto_now_add=True)
-
-    def __str__(self):
-        return "{} - {}".format(self.id, self.full_name)
+    published_at = models.DateTimeField(verbose_name='Yorum Tarihi', auto_now_add=True)
 
     class Meta:
-        ordering = ['-publishedAt']
+        ordering = ['-published_at']
         verbose_name = 'Yorum'
         verbose_name_plural = 'Yorumlar'
         db_table = 'comments'
+
+    def __str__(self):
+        return "{} - {}".format(self.id, self.full_name)

@@ -4,8 +4,8 @@ from .models import Category
 
 
 class CategoryAdmin(ExportActionModelAdmin):
-    list_display = ['id', 'name', 'slug', 'type', 'publishedAt']
-    list_filter = ['publishedAt', 'type']
+    list_display = ['id', 'name', 'slug', 'type', 'published_at']
+    list_filter = ['published_at', 'type']
     list_editable = ['name', 'type']
     search_fields = ['name', 'slug']
     pass

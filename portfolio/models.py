@@ -11,11 +11,21 @@ class Portfolio(models.Model):
     slug = models.SlugField(unique=True, verbose_name='Slug', editable=False)
     short_description = models.TextField(verbose_name='Meta Description')
     content = RichTextField(verbose_name='Proje Açıklaması')
-    publishedAt = models.DateTimeField(verbose_name='Proje Yayınlanma Tarihi', auto_now_add=True)
     image = models.ImageField(null=True, blank=True, verbose_name='Proje Görseli')
+    published_at = models.DateTimeField(verbose_name='Proje Yayınlanma Tarihi', auto_now_add=True)
+
+    class Meta:
+        ordering = ['-published_at']
+        verbose_name = 'Proje'
+        verbose_name_plural = 'Projeler'
+        db_table = 'portfolios'
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = self.get_unique_slug()
+        return super(Portfolio, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('portfolio:detail', kwargs={'slug': self.slug})
@@ -28,13 +38,3 @@ class Portfolio(models.Model):
             unique_slug = "{}-{}".format(unique_slug, counter)
             counter += 1
         return unique_slug
-
-    def save(self, *args, **kwargs):
-        self.slug = self.get_unique_slug()
-        return super(Portfolio, self).save(*args, **kwargs)
-
-    class Meta:
-        ordering = ['-publishedAt']
-        verbose_name = 'Proje'
-        verbose_name_plural = 'Projeler'
-        db_table = 'portfolios'

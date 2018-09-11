@@ -5,7 +5,7 @@
     <div class="card-body">
         <form method="POST">
             {% csrf_token %}
-            {{ form|crispy }}
+            {% crispy form form.helper %}
             <input type="submit" class="btn btn-success" value="Gönder">
         </form>
     </div>

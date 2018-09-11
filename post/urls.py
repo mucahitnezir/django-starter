@@ -4,7 +4,7 @@ from .views import *
 app_name = 'post'
 
 urlpatterns = [
-    url('^index/$', post_index, name='index'),
+    url(r'^$', post_index, name='index'),
     url('^create/$', post_create, name='create'),
     url('^(?P<slug>[\w-]+)/$', post_detail, name='detail'),
     url('^(?P<id>\d+)/update$', post_update, name='update'),
