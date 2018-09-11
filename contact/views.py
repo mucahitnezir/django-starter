@@ -25,7 +25,14 @@ def contact_index(request):
         return redirect('contact:index')
     else:
         # Get form
-        form = ContactForm()
+        initial_form_data = {}
+        if request.user.is_authenticated:
+            initial_form_data = {
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+                'email_address': request.user.email,
+            }
+        form = ContactForm(initial=initial_form_data)
         # Get contact parameters
         params = ['facebook_url', 'twitter_url', 'linkedin_url', 'instagram_url', 'phone_number', 'email_address', 'gmap_iframe_code']
         parameters = Setting.get_multiple(params)
