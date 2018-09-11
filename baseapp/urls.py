@@ -32,3 +32,7 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Change admin site title
+admin.site.site_header = "Mücahit Nezir"
+admin.site.site_title = "Mücahit Nezir"
