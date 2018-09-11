@@ -22,7 +22,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = 'y*gmwp0n9)eg-wzt9nd5#h#ypno@db#lf!itjgmo&6&7-upe3x'
 
 # Application definition
-# Model oluşturulmayan ugyulamaları eklemeye gerek yok
 INSTALLED_APPS = [
     # Django
     'django.contrib.admin',
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     'service',
     'setting',
     'contact',
+    'about',
     # Third
     'crispy_forms',
     'django_cleanup',

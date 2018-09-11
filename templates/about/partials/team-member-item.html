@@ -1,0 +1,17 @@
+<div class="card mb-3">
+    {% if member.image %}
+        <img class="card-img-top" src="{{ member.image.url }}" alt="{{ member.full_name }}">
+    {% endif %}
+    <div class="card-body text-center">
+        <h5 class="card-title team-member-fullname">{{ member.full_name }}</h5>
+        <p class="card-text team-member-title">{{ member.title }}</p>
+        <div class="team-member-icons">
+            {% if member.email_address %}
+                <a href="mailto:{{ member.email_address }}" class="card-link"><i class="fa fa-envelope"></i></a>
+            {% endif %}
+            {% if member.linkedin_url %}
+                <a href="{{ member.linkedin_url }}" class="card-link" target="_blank"><i class="fa fa-linkedin"></i></a>
+            {% endif %}
+        </div>
+    </div>
+</div>

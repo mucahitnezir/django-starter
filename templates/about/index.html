@@ -1,0 +1,28 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+    <!--Title-->
+    <div class="bg-info p-3 text-white text-center mb-4 rounded">
+        <h1 class="h4 mb-0">About</h1>
+    </div>
+
+    <!--About Us-->
+    <div class="card mb-4">
+        <div class="card-body text-justify" id="about-content">
+            {{ about_us|safe }}
+        </div>
+    </div>
+
+    <!--Team Members-->
+    {% if team_members|length > 0 %}
+        <div class="row">
+            {% for member in team_members %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    {% include 'about/partials/team-member-item.html' %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}

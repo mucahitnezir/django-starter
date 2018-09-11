@@ -88,5 +88,14 @@
       "description": "Şirket Adı",
       "value": "Awesome Company"
     }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 11,
+    "fields": {
+      "key": "about_page_content",
+      "description": "Hakkımızda Sayfası İçeriği",
+      "value": "<p>The first paragraph of about page content :)</p>"
+    }
   }
 ]

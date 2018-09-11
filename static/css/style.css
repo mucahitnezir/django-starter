@@ -84,3 +84,30 @@ a.social.facebook { background-color: #3b5998; }
 a.social.twitter { background-color: #1da1f2; }
 a.social.instagram { background-color: #f0495a; }
 a.social.linkedin { background-color: #0077b5; }
+
+/* About */
+#about-content p:last-child {
+    margin-bottom: 0;
+}
+.team-member-fullname {
+    margin-bottom: 3px;
+}
+.team-member-title {
+    color: #818181;
+    margin-bottom: 15px;
+}
+.team-member-icons:before {
+    content: "";
+    display: block;
+    margin: 10px auto 15px auto;
+    width: 90px;
+    height: 1px;
+    background-color: #f0495a;
+}
+.team-member-icons a {
+    color: #bcbcbc;
+    transition: 300ms color;
+    font-size: 18px;
+    line-height: 18px;
+}
+.team-member-icons a:hover { color: #f0495a; }
