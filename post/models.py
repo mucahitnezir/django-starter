@@ -5,7 +5,8 @@ from ckeditor.fields import RichTextField
 
 
 class Post(models.Model):
-    category = models.ForeignKey('category.Category', on_delete=models.CASCADE, verbose_name='Kategori', related_name='posts')
+    category = models.ForeignKey('category.Category', on_delete=models.CASCADE, verbose_name='Kategori',
+                                 related_name='posts', limit_choices_to={'type': 'post'})
     user = models.ForeignKey('auth.User', verbose_name='Yazar', on_delete=models.CASCADE, related_name='posts')
     title = models.CharField(max_length=155, verbose_name='Başlık')
     content = RichTextField(verbose_name='İçerik')

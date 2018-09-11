@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 
 class Portfolio(models.Model):
     category = models.ForeignKey('category.Category', on_delete=models.CASCADE, related_name='portfolios',
-                                 verbose_name='Proje Kategorisi')
+                                 verbose_name='Proje Kategorisi', limit_choices_to={'type': 'portfolio'})
     title = models.CharField(max_length=120, verbose_name='Proje Adı')
     slug = models.SlugField(unique=True, verbose_name='Slug', editable=False)
     short_description = models.TextField(verbose_name='Meta Description')

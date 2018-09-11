@@ -6,7 +6,7 @@ from django.utils.text import slugify
 
 class Service(models.Model):
     category = models.ForeignKey('category.Category', on_delete=models.CASCADE, related_name='services',
-                                 verbose_name='Hizmet Kategorisi')
+                                 verbose_name='Hizmet Kategorisi', limit_choices_to={'type': 'service'})
     title = models.CharField(max_length=160, verbose_name='Hizmet Adı')
     slug = models.SlugField(unique=True, verbose_name='Slug', editable=False)
     short_description = models.TextField(verbose_name='Kısa Açıklama')
