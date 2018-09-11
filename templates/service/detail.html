@@ -3,14 +3,8 @@
 {% block content %}
 
     <div id="service-detail">
-        <div class="bg-info p-3 text-white mb-4 rounded category-description">
-            <h1 class="h4 {% if not service.short_description %}mb-0{% endif %}">{{ service.title }}
-                <small>{{ service.category.name }}</small>
-            </h1>
-            {% if service.short_description %}
-                <div>{{ service.short_description }}</div>
-            {% endif %}
-        </div>
+        <!--Title-->
+        {% include 'partials/title-detail.html' with title=service.title subtitle=service.short_description small_title=service.category.name %}
 
         <div class="row clearfix">
             <div class="col-md-4">

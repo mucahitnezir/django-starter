@@ -1,12 +1,7 @@
 {% extends 'layout/post.html' %}
 
 {% block beforeGrid %}
-    <div class="bg-info p-3 text-white mb-4 rounded category-description">
-        <h1 class="h4 {% if not category.description %}mb-0{% endif %}">Kategori: {{ category.name }}</h1>
-        {% if category.description %}
-            <div>{{ category.description|safe }}</div>
-        {% endif %}
-    </div>
+    {% include 'partials/title-detail.html' with title=category.name subtitle=category.description %}
 {% endblock %}
 
 {% block postContent %}

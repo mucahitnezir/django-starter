@@ -2,10 +2,17 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <!--Meta Tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{% if meta_description %}{{ meta_description }}{% else %}Django blog{% endif %}">
+    <!--Title-->
     <title>{% if title %}{{ title }}{% else %}Django Blog{% endif %}</title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="{% static 'img/favicon-192x192.png' %}">
+    <link rel="icon" sizes="192x192" href="{% static 'img/favicon-192x192.png' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <!--Styles-->
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     {% block styles %}{% endblock %}

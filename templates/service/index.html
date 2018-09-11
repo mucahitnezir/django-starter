@@ -2,9 +2,8 @@
 
 {% block content %}
 
-    <div class="bg-info p-3 text-white text-center mb-5 rounded">
-        <h1 class="h4 mb-0">Hizmet Listesi</h1>
-    </div>
+    <!--Title-->
+    {% include 'partials/title-default.html' %}
 
     <div id="service-list">
         {% for category in categories %}

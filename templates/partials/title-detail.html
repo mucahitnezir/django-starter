@@ -1,0 +1,10 @@
+<div class="bg-info p-3 text-white mb-4 rounded category-description">
+    <h1 class="h4 {% if not subtitle %}mb-0{% endif %}">{{ title|safe }}
+        {% if small_title %}
+            <small>{{ small_title|safe }}</small>
+        {% endif %}
+    </h1>
+    {% if subtitle %}
+        <div>{{ subtitle|safe }}</div>
+    {% endif %}
+</div>

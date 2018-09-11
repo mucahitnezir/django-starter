@@ -4,14 +4,7 @@
 
     <div id="portfolio-detail">
         <!--Title-->
-        <div class="bg-info p-3 text-white mb-4 rounded category-description">
-            <h1 class="h4 {% if not portfolio.short_description %}mb-0{% endif %}">{{ portfolio.title }}
-                <small>{{ portfolio.category.name }}</small>
-            </h1>
-            {% if portfolio.short_description %}
-                <div>{{ portfolio.short_description }}</div>
-            {% endif %}
-        </div>
+        {% include 'partials/title-detail.html' with title=portfolio.title subtitle=portfolio.short_description small_title=portfolio.category.name %}
 
         <!--Gallery and Detail Info-->
         <div class="row mb-4 clearfix">
