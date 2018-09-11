@@ -44,7 +44,6 @@ def post_index(request):
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    # post = Post.objects.get(2)
     form = CommentForm(request.POST or None)
     if form.is_valid():
         messages.success(request, 'Comment is created successfully')
@@ -63,17 +62,6 @@ def post_detail(request, slug):
 
 @login_required(login_url='account:login')
 def post_create(request):
-    # # First alternative
-    # if request.method == 'POST':
-    #     title = request.POST.get('title')
-    #     content = request.POST.get('content')
-    #     Post.objects.create(title=title, content=content)
-    #
-    # # Second alternative
-    # form = PostForm(request.POST or None)
-    # if form.is_valid():
-    #     form.save()
-
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES or None)
         if form.is_valid():
@@ -95,24 +83,31 @@ def post_create(request):
 @login_required(login_url='account:login')
 def post_update(request, id):
     post = get_object_or_404(Post, id=id)
-    form = PostForm(request.POST or None, request.FILES or None, instance=post)
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'Post updated successfully')
-        return HttpResponseRedirect(post.get_absolute_url())
 
-    context = {
-        'form': form,
-        'title': 'Güncelle: ' + post.title
-    }
-    return render(request, 'post/form.html', context)
+    if request.user.is_superuser or post.user == request.user:
+        form = PostForm(request.POST or None, request.FILES or None, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Post updated successfully')
+            return HttpResponseRedirect(post.get_absolute_url())
+
+        context = {
+            'form': form,
+            'title': 'Güncelle: ' + post.title
+        }
+        return render(request, 'post/form.html', context)
+    else:
+        return redirect('home')
 
 
-@login_required(login_url='post:index')
+@login_required(login_url='account:login')
 def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
-    post.delete()
-    return redirect('post:index')
+    if request.user.is_superuser or post.user == request.user:
+        post.delete()
+        return redirect('post:index')
+    else:
+        return redirect('post:index')
 
 
 def category_detail(request, slug, id):
