@@ -17,10 +17,7 @@
                     <a class="nav-link" href="{% url 'portfolio:index' %}">Portfolio</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown">
-                        Blog
-                    </a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Blog</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{% url 'post:index' %}">Yazılar</a>
                         {% if request.user.is_authenticated %}
@@ -28,11 +25,11 @@
                         {% endif %}
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact:index' %}">Contact</a>
+                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown">
-                        Account
-                    </a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Account</a>
                     <div class="dropdown-menu">
                         {% if not request.user.is_authenticated %}
                             <a class="dropdown-item" href="{% url 'account:login' %}">Giriş Yap</a>

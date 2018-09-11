@@ -1,0 +1,62 @@
+{% extends 'layout/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="contact-map-wrapper mb-4">
+        {{ parameters.gmap_iframe_code|safe }}
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4 mb-md-0">
+                <div class="card-header">İletişim Formu</div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% crispy form form.helper %}
+                        <input type="submit" class="btn btn-primary" value="Gönder">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="ps-20">
+                <div class="table-responsive bg-white">
+                    <table class="table table-bordered table-striped mb-0">
+                        <tr>
+                            <th>Telefon No</th>
+                            <td>{{ parameters.phone_number }}</td>
+                        </tr>
+                        <tr>
+                            <th>E-posta Adresi</th>
+                            <td>{{ parameters.email_address }}</td>
+                        </tr>
+                        <tr>
+                            <th>Sosyal Medya</th>
+                            <td>
+                                <div class="social-wrapper">
+                                    <a class="social facebook" href="{{ parameters.facebook_url }}">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a class="social twitter" href="{{ parameters.twitter_url }}">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a class="social instagram" href="{{ parameters.instagram_url }}">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                    <a class="social linkedin" href="{{ parameters.linkedin_url }}">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

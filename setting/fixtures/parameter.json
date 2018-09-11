@@ -1,0 +1,92 @@
+[
+  {
+    "model": "setting.Setting",
+    "pk": 1,
+    "fields": {
+      "key": "gtm_container_id",
+      "description": "Google Tag Manager Container ID",
+      "value": "GTM-XXXXXXX"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 2,
+    "fields": {
+      "key": "email_address",
+      "description": "Site üzerinde kullanıcılara gösterilecek olan eposta adresi",
+      "value": "info@example.com"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 3,
+    "fields": {
+      "key": "phone_number",
+      "description": "Site üzerinde kullanıcılara gösterilecek olan telefon numarası",
+      "value": "+90(555) 555 55 55"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 4,
+    "fields": {
+      "key": "gmap_iframe_code",
+      "description": "Google map iframe kodu",
+      "value": "+90(555) 555 55 55"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 5,
+    "fields": {
+      "key": "facebook_url",
+      "description": "Facebook adresi",
+      "value": "https://facebook.com"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 6,
+    "fields": {
+      "key": "twitter_url",
+      "description": "Twitter adresi",
+      "value": "https://twitter.com"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 7,
+    "fields": {
+      "key": "instagram_url",
+      "description": "Instagram adresi",
+      "value": "https://instagram.com"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 8,
+    "fields": {
+      "key": "linkedin_url",
+      "description": "Linkedin adresi",
+      "value": "https://linkedin.com"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 9,
+    "fields": {
+      "key": "contact_form_notification_mail",
+      "description": "İletişim formundan gelen mesajların gönderileceği e-posta adresi",
+      "value": "info@example.com"
+    }
+  },
+  {
+    "model": "setting.Setting",
+    "pk": 10,
+    "fields": {
+      "key": "company_name",
+      "description": "Şirket Adı",
+      "value": "Awesome Company"
+    }
+  }
+]

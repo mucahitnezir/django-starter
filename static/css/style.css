@@ -12,6 +12,11 @@
     top: 20px;
 }
 
+/* Global Definitions */
+textarea {
+   resize: none;
+}
+
 /* Main Structure */
 body {
     background-color: #E6E6E6;
@@ -50,3 +55,32 @@ footer#main-footer {
     padding: 20px;
     user-select: none;
 }
+
+/* Contact */
+.contact-map-wrapper {
+    height: 350px;
+}
+
+.social-wrapper {
+    display: flex;
+}
+a.social {
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    color: #FFF;
+    text-decoration: none;
+    transition: 300ms opacity;
+}
+a.social:nth-last-child { margin-right: 0; }
+a.social:hover { opacity: 0.7; }
+a.social.facebook { background-color: #3b5998; }
+a.social.twitter { background-color: #1da1f2; }
+a.social.instagram { background-color: #f0495a; }
+a.social.linkedin { background-color: #0077b5; }

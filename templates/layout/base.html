@@ -3,9 +3,11 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{% if meta_description %}{{ meta_description }}{% else %}Django blog{% endif %}">
     <title>{% if title %}{{ title }}{% else %}Django Blog{% endif %}</title>
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     {% block styles %}{% endblock %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
