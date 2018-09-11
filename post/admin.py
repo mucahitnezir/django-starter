@@ -7,7 +7,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display_links = ['id']
     list_filter = ['published_at', 'category']
     search_fields = ['title', 'content']
-    list_editable = ['title']
+    list_editable = ['title', 'category']
 
     def get_user(self, obj):
         return obj.user.get_full_name()

@@ -7,7 +7,7 @@ class PortfolioAdmin(admin.ModelAdmin):
     list_display_links = ['id']
     list_filter = ['published_at', 'category']
     search_fields = ['title', 'content']
-    list_editable = ['title']
+    list_editable = ['title', 'category']
 
     class Meta:
         model = Portfolio
