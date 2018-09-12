@@ -4,10 +4,14 @@
 <head>
     <!--Meta Tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{% if meta_description %}{{ meta_description|safe }}{% else %}Django blog{% endif %}">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description"
+          content="{% if meta_description %}{{ meta_description|safe }}{% else %}Demo Django web app{% endif %}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex,nofollow">
     <!--Title-->
-    <title>{% if title %}{{ title }}{% else %}Django Blog{% endif %}</title>
+    <title>{% if title %}{{ title }}{% else %}Mücahit Nezir{% endif %}</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{% static 'img/favicon-192x192.png' %}">
     <link rel="icon" sizes="192x192" href="{% static 'img/favicon-192x192.png' %}">
