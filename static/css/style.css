@@ -58,7 +58,11 @@ footer#main-footer {
 
 /* Contact */
 .contact-map-wrapper {
-    height: 350px;
+    max-height: 350px;
+}
+.contact-map-wrapper iframe {
+    width: 100%;
+    max-height: 350px;
 }
 
 .social-wrapper {
