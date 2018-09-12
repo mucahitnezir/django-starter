@@ -6,7 +6,7 @@ class Setting(models.Model):
     key = models.CharField(max_length=32, unique=True, verbose_name='Parametre', editable=False)
     description = models.CharField(max_length=255, verbose_name='Parametre Açıklaması', null=True, blank=True)
     value = models.TextField(verbose_name='Parametre Değeri', null=True, blank=True)
-    updated_at = models.DateTimeField(verbose_name='Son Güncelleme Tarihi', auto_now=True)
+    updated_at = models.DateTimeField(verbose_name='Son Güncelleme Tarihi', auto_now_add=True, auto_now=True)
 
     @property
     def admin_list_value(self):
