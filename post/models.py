@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from django.utils.html import strip_tags
+from django.template.defaultfilters import truncatechars
+
 from ckeditor.fields import RichTextField
 
 
@@ -13,6 +16,10 @@ class Post(models.Model):
     image = models.ImageField(null=True, blank=True, verbose_name='Resim')
     slug = models.SlugField(unique=True, null=True, blank=True, verbose_name='Slug', editable=False)
     published_at = models.DateTimeField(verbose_name='Yayın Tarihi', auto_now_add=True)
+
+    @property
+    def meta_description(self):
+        return truncatechars(strip_tags(self.content), 160)
 
     class Meta:
         ordering = ['-published_at']

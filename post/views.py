@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
 
 from .models import Post
 from .forms import PostForm, CommentForm
@@ -10,7 +10,10 @@ from category.models import Category
 
 
 def post_index(request):
+    # Get all blog categories
     categories = Category.objects.filter(type='post')
+
+    # Get posts with pagination
     post_list = Post.objects.all()
 
     query = request.GET.get('q')
@@ -34,35 +37,44 @@ def post_index(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
 
+    # Page context
     context = {
+        'title': 'Blog Yazıları',
         'posts': posts,
-        'categories': categories,
-        'title': 'Blog Yazıları'
+        'categories': categories
     }
+    # Render page
     return render(request, 'post/index.html', context)
 
 
 def post_detail(request, slug):
+    # Get post
     post = get_object_or_404(Post, slug=slug)
+    # Create comment form
     form = CommentForm(request.POST or None)
+    # If form is valid, save it
     if form.is_valid():
         messages.success(request, 'Comment is created successfully')
         comment = form.save(commit=False)
         comment.post = post
         comment.save()
         return HttpResponseRedirect(post.get_absolute_url())
-
+    # Page context
     context = {
+        'title': post.title,
+        'meta_description': post.meta_description,
         'post': post,
-        'form': form,
-        'title': post.title
+        'form': form
     }
+    # Render page
     return render(request, 'post/detail.html', context)
 
 
 @login_required(login_url='account:login')
 def post_create(request):
+    # Save form or create form instance
     if request.method == 'POST':
+        # Set post variables to form
         form = PostForm(request.POST, request.FILES or None)
         if form.is_valid():
             post = form.save(commit=False)
@@ -72,29 +84,33 @@ def post_create(request):
             return HttpResponseRedirect(post.get_absolute_url())
     else:
         form = PostForm()
-
+    # Page context
     context = {
-        'form': form,
-        'title': 'Blog Yazısı Oluştur'
+        'title': 'Blog Yazısı Oluştur',
+        'form': form
     }
+    # Render page
     return render(request, 'post/form.html', context)
 
 
 @login_required(login_url='account:login')
 def post_update(request, id):
+    # Get post
     post = get_object_or_404(Post, id=id)
-
+    # Security control
     if request.user.is_superuser or post.user == request.user:
+        # Create form and if it is valid, save it
         form = PostForm(request.POST or None, request.FILES or None, instance=post)
         if form.is_valid():
             form.save()
             messages.success(request, 'Post updated successfully')
             return HttpResponseRedirect(post.get_absolute_url())
-
+        # Page context
         context = {
-            'form': form,
-            'title': 'Güncelle: ' + post.title
+            'title': 'Güncelle: ' + post.title,
+            'form': form
         }
+        # Render page
         return render(request, 'post/form.html', context)
     else:
         return redirect('home')
@@ -102,7 +118,9 @@ def post_update(request, id):
 
 @login_required(login_url='account:login')
 def post_delete(request, id):
+    # Get post
     post = get_object_or_404(Post, id=id)
+    # Security control
     if request.user.is_superuser or post.user == request.user:
         post.delete()
         return redirect('post:index')
@@ -111,12 +129,19 @@ def post_delete(request, id):
 
 
 def category_detail(request, slug, id):
+    # Get category
     category = get_object_or_404(Category, id=id, slug=slug, type='post')
+    # Get all blog categories
     categories = Category.objects.filter(type='post')
+    # Get all category posts
     posts = category.posts.all()
+    # Page context
     context = {
+        'title': category.name,
+        'meta_description': category.meta_description,
         'category': category,
         'categories': categories,
         'posts': posts
     }
+    # Render page
     return render(request, 'post/category.html', context)

@@ -7,7 +7,7 @@
             {{ post.title }}
             <small>{{ post.published_at|timesince }} önce</small>
         </h5>
-        <p class="card-text">{{ post.content|safe|linebreaks|truncatewords:15 }}</p>
+        <p class="card-text">{{ post.meta_description|safe }}</p>
     </div>
     <div class="card-footer">
         <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Detay</a>

@@ -5,7 +5,7 @@
     <!--Meta Tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{% if meta_description %}{{ meta_description }}{% else %}Django blog{% endif %}">
+    <meta name="description" content="{% if meta_description %}{{ meta_description|safe }}{% else %}Django blog{% endif %}">
     <!--Title-->
     <title>{% if title %}{{ title }}{% else %}Django Blog{% endif %}</title>
     <!-- Favicons -->
