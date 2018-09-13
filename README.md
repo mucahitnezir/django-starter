@@ -16,8 +16,8 @@ Perform the following steps after downloading the project.
 2. Create new virtualenv in project root direction.  
 `virtualenv venv`
 3. Activate your virtualenv  
-<sub>Linux & Mac: `source venv/bin/activate`  
-Windows: `venv\Scripts\activate`</sub>
+**Linux & Mac:** `source venv/bin/activate`  
+**Windows:** `venv\Scripts\activate`
 4. Install required packages  
 `pip install -r requirements.txt`
 5. Create migration files  
