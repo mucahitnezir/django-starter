@@ -26,7 +26,9 @@ Perform the following steps after downloading the project.
 `python manage.py migrate`
 7. Create super user  
 `python manage.py createsuperuser`
-8. Collect static files (Only required in production)  
+8. Install bower packages. (bower npm package has to be installed globally via `npm install -g bower`)
+`bower install`
+9. Collect static files (Only required in production)  
 `python manage.py collectstatic`
-9. Run server  
+10. Run server  
 `python manage.py runserver`
