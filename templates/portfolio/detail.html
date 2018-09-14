@@ -1,5 +1,7 @@
 {% extends 'layout/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
     <div id="portfolio-detail">
@@ -32,11 +34,11 @@
                 <div class="table-responsive bg-white">
                     <table class="table table-bordered table-striped mb-0">
                         <tr>
-                            <th>Kategori</th>
+                            <th>{% trans "Category" %}</th>
                             <td>{{ portfolio.category.name }}</td>
                         </tr>
                         <tr>
-                            <th>Yayın Tarihi</th>
+                            <th>{% trans "Publishing Date" %}</th>
                             <td>{{ portfolio.published_at }}</td>
                         </tr>
                     </table>

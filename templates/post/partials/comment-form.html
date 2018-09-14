@@ -1,12 +1,12 @@
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags i18n %}
 
 <div class="card">
-    <div class="card-header">Yorum Ekle</div>
+    <div class="card-header">{% trans "Create comment" %}</div>
     <div class="card-body">
         <form method="POST">
             {% csrf_token %}
             {% crispy form form.helper %}
-            <input type="submit" class="btn btn-success" value="Gönder">
+            <input type="submit" class="btn btn-success" value="{% trans "Submit" %}">
         </form>
     </div>
 </div>

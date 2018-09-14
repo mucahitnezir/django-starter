@@ -1,6 +1,6 @@
 {% extends 'layout/base.html' %}
 
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
     <!--Categories-->
     <div class="d-flex justify-content-center mb-4">
         <div id="portfolio-filter-buttons" class="btn-group" role="group">
-            <button type="button" class="btn btn-secondary" data-filter="*">Tümü</button>
+            <button type="button" class="btn btn-secondary" data-filter="*">{% trans "All" %}</button>
             {% for category in categories %}
                 <button type="button" class="btn btn-secondary"
                         data-filter=".{{ category.slug }}">{{ category.name }}</button>

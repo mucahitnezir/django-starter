@@ -1,6 +1,6 @@
 {% extends 'layout/base.html' %}
 
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags i18n %}
 
 {% block content %}
 
@@ -11,12 +11,12 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card mb-4 mb-md-0">
-                <div class="card-header">İletişim Formu</div>
+                <div class="card-header">{% trans "Contact Form" %}</div>
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
                         {% crispy form form.helper %}
-                        <input type="submit" class="btn btn-primary" value="Gönder">
+                        <input type="submit" class="btn btn-primary" value="{% trans "Submit" %}">
                     </form>
                 </div>
             </div>
@@ -26,15 +26,15 @@
                 <div class="table-responsive bg-white">
                     <table class="table table-bordered table-striped mb-0">
                         <tr>
-                            <th>Telefon No</th>
+                            <th>{% trans "Phone Number" %}</th>
                             <td>{{ parameters.phone_number }}</td>
                         </tr>
                         <tr>
-                            <th>E-posta Adresi</th>
+                            <th>{% trans "Email Address" %}</th>
                             <td>{{ parameters.email_address }}</td>
                         </tr>
                         <tr>
-                            <th>Sosyal Medya</th>
+                            <th>{% trans "Social Media" %}</th>
                             <td>
                                 <div class="social-wrapper">
                                     <a class="social facebook" href="{{ parameters.facebook_url }}">

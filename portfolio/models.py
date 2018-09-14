@@ -1,23 +1,25 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from django.utils.translation import ugettext_lazy as _
+
 from ckeditor.fields import RichTextField
 
 
 class Portfolio(models.Model):
     category = models.ForeignKey('category.Category', on_delete=models.CASCADE, related_name='portfolios',
-                                 verbose_name='Proje Kategorisi', limit_choices_to={'type': 'portfolio'})
-    title = models.CharField(max_length=120, verbose_name='Proje Adı')
-    slug = models.SlugField(unique=True, verbose_name='Slug', editable=False)
-    short_description = models.TextField(verbose_name='Meta Description')
-    content = RichTextField(verbose_name='Proje Açıklaması')
-    image = models.ImageField(null=True, blank=True, verbose_name='Proje Görseli')
-    published_at = models.DateTimeField(verbose_name='Proje Yayınlanma Tarihi', auto_now_add=True)
+                                 verbose_name=_('Portfolio Category'), limit_choices_to={'type': 'portfolio'})
+    title = models.CharField(max_length=120, verbose_name=_('Portfolio Title'))
+    slug = models.SlugField(unique=True, verbose_name=_('Slug'), editable=False)
+    short_description = models.TextField(verbose_name=_('Meta Description'))
+    content = RichTextField(verbose_name=_('Portfolio Description'))
+    image = models.ImageField(null=True, blank=True, verbose_name=_('Portfolio Image'))
+    published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True)
 
     class Meta:
         ordering = ['-published_at']
-        verbose_name = 'Proje'
-        verbose_name_plural = 'Projeler'
+        verbose_name = _('Portfolio')
+        verbose_name_plural = _('Portfolios')
         db_table = 'portfolios'
 
     def __str__(self):

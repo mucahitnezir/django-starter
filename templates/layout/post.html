@@ -1,5 +1,7 @@
 {% extends 'layout/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
     {% block beforeGrid %}
@@ -14,9 +16,9 @@
             <div class="ps-20">
                 <!--Search Box-->
                 <form class="d-flex mb-3" method="GET" action="{% url 'post:index' %}">
-                    <input class="form-control flex-grow-1 rounded-0" type="search" placeholder="Makale & Yazar & Kategori Ara" name="q"
+                    <input class="form-control flex-grow-1 rounded-0" type="search" placeholder="{% trans "Search Placeholder" %}" name="q"
                            value="{{ request.GET.q }}">
-                    <button class="btn btn-success rounded-0" type="submit">Ara</button>
+                    <button class="btn btn-success rounded-0" type="submit">{% trans "Search" %}</button>
                 </form>
 
                 <!--Categories-->

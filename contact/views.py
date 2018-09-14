@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.utils.translation import ugettext as _
 
 from .forms import ContactForm
 from helpers.mail import MailHelper
@@ -17,11 +18,11 @@ def contact_index(request):
             send = mail_helper.send_contact_form_mail(message)
             if send:
                 message.save()
-                messages.success(request, 'Message created successfully!')
+                messages.success(request, _('Message created successfully!'))
             else:
-                messages.error(request, 'Email did not send.')
+                messages.error(request, _('Email did not send!'))
         else:
-            messages.error(request, 'Message did not created!')
+            messages.error(request, _('Message did not created!'))
         return redirect('contact:index')
     else:
         # Get form
@@ -38,7 +39,7 @@ def contact_index(request):
         parameters = Setting.get_multiple(params)
         # Page context
         context = {
-            'title': 'İletişim',
+            'title': _('Contact'),
             'form': form,
             'parameters': parameters
         }

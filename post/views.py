@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
+from django.utils.translation import ugettext as _
 
 from .models import Post
 from .forms import PostForm, CommentForm
@@ -39,7 +40,7 @@ def post_index(request):
 
     # Page context
     context = {
-        'title': 'Blog Yazıları',
+        'title': _('Posts'),
         'posts': posts,
         'categories': categories
     }
@@ -54,7 +55,7 @@ def post_detail(request, slug):
     form = CommentForm(request.POST or None)
     # If form is valid, save it
     if form.is_valid():
-        messages.success(request, 'Comment is created successfully')
+        messages.success(request, _('Comment is created successfully'))
         comment = form.save(commit=False)
         comment.post = post
         comment.save()
@@ -80,13 +81,13 @@ def post_create(request):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            messages.success(request, 'Post created successfully')
+            messages.success(request, _('Post created successfully'))
             return HttpResponseRedirect(post.get_absolute_url())
     else:
         form = PostForm()
     # Page context
     context = {
-        'title': 'Blog Yazısı Oluştur',
+        'title': _('Create Post'),
         'form': form
     }
     # Render page
@@ -103,11 +104,11 @@ def post_update(request, id):
         form = PostForm(request.POST or None, request.FILES or None, instance=post)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Post updated successfully')
+            messages.success(request, _('Post updated successfully!'))
             return HttpResponseRedirect(post.get_absolute_url())
         # Page context
         context = {
-            'title': 'Güncelle: ' + post.title,
+            'title': _('Update') + ': ' + post.title,
             'form': form
         }
         # Render page

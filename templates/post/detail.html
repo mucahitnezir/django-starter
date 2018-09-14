@@ -1,5 +1,7 @@
 {% extends 'layout/post.html' %}
 
+{% load i18n %}
+
 {% block beforeGrid %}
     {% if post.image %}
         <div class="mb-4">
@@ -12,15 +14,15 @@
     <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title">{{ post.title }}
-                <small>{{ post.published_at|timesince }} önce</small>
-                <small>yazar: {{ post.user.get_full_name }}</small>
+                <small>{{ post.published_at|timesince }} {% trans "ago" %}</small>
+                <small>{% trans "Author" %}: {{ post.user.get_full_name }}</small>
             </h5>
             <p class="card-text">{{ post.content|safe }}</p>
         </div>
         {% if request.user.is_authenticated %}
             <div class="card-footer">
-                <a href="{{ post.get_update_url }}" class="btn btn-success">Güncelle</a>
-                <a href="{{ post.get_delete_url }}" class="btn btn-danger">Sil</a>
+                <a href="{{ post.get_update_url }}" class="btn btn-success">{% trans "Update" %}</a>
+                <a href="{{ post.get_delete_url }}" class="btn btn-danger">{% trans "Delete" %}</a>
             </div>
         {% endif %}
     </div>

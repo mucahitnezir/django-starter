@@ -1,13 +1,15 @@
+{% load i18n %}
+
 <ul class="pagination justify-content-center">
     {% if posts.has_previous %}
         <li class="page-item">
             <a class="page-link" href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
-               tabindex="-1">First</a>
+               tabindex="-1">{% trans "First" %}</a>
         </li>
         <li class="page-item">
             <a class="page-link"
                href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
-               tabindex="-1">Previous</a>
+               tabindex="-1">{% trans "Previous" %}</a>
         </li>
     {% endif %}
 
@@ -20,12 +22,12 @@
         <li class="page-item">
             <a class="page-link"
                href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
-               tabindex="-1">Next</a>
+               tabindex="-1">{% trans "Next" %}</a>
         </li>
         <li class="page-item">
             <a class="page-link"
                href="?page={{ posts.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
-               tabindex="-1">Last</a>
+               tabindex="-1">{% trans "Last" %}</a>
         </li>
     {% endif %}
 </ul>

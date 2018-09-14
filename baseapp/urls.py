@@ -14,22 +14,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import url, include
-from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls import url, include
+from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
+from django.urls import path
+
 from home.views import home_view
 
 urlpatterns = [
-    url(r'^$', home_view, name='home'),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls, name='admin'),
+]
+
+urlpatterns += i18n_patterns(
+    url(r'^$', home_view, name='home'),
+    path('about/', include('about.urls')),
+    path('contact/', include('contact.urls')),
     path('blog/', include('post.urls')),
     path('accounts/', include('account.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('service/', include('service.urls')),
-    path('contact/', include('contact.urls')),
-    path('about/', include('about.urls')),
-]
+    prefix_default_language=True
+)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

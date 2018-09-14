@@ -1,11 +1,13 @@
-<h3 class="h3">Comments</h3>
+{% load i18n %}
+
+<h3 class="h3">{% trans "Comments" %}</h3>
 <div class="mb-4">
     {% for comment in post.get_confirmed_comments %}
 
         <div class="card mb-2">
-            <div class="card-header">{{ comment.full_name }} - {{ comment.is_confirmed }}</div>
+            <div class="card-header">{{ comment.full_name }}</div>
             <div class="card-body">{{ comment.content|linebreaks }}</div>
-            <div class="card-footer">{{ comment.published_at|timesince }} önce</div>
+            <div class="card-footer">{{ comment.published_at|timesince }} {% trans "ago" %}</div>
         </div>
 
     {% endfor %}

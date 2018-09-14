@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">Mücahit Nezir</a>
@@ -8,48 +10,52 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">Homepage</a>
+                    <a class="nav-link" href="{% url 'home' %}">{% trans "Homepage" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about:index' %}">About</a>
+                    <a class="nav-link" href="{% url 'about:index' %}">{% trans "About" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'service:index' %}">Services</a>
+                    <a class="nav-link" href="{% url 'service:index' %}">{% trans "Services" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'portfolio:index' %}">Portfolio</a>
+                    <a class="nav-link" href="{% url 'portfolio:index' %}">{% trans "Portfolio" %}</a>
                 </li>
                 {% if not request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'post:index' %}">Blog</a>
+                        <a class="nav-link" href="{% url 'post:index' %}">{% trans "Blog" %}</a>
                     </li>
                 {% else %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Blog</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                            {% trans "Blog" %}
+                        </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{% url 'post:index' %}">Yazılar</a>
+                            <a class="dropdown-item" href="{% url 'post:index' %}">{% trans "Posts" %}</a>
                             {% if request.user.is_authenticated %}
-                                <a class="dropdown-item" href="{% url 'post:create' %}">Yazı Ekle</a>
+                                <a class="dropdown-item" href="{% url 'post:create' %}">{% trans "Create Post" %}</a>
                             {% endif %}
                         </div>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact:index' %}">Contact</a>
+                    <a class="nav-link" href="{% url 'contact:index' %}">{% trans "Contact" %}</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Account</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        {% trans "Account" %}
+                    </a>
                     <div class="dropdown-menu">
                         {% if not request.user.is_authenticated %}
-                            <a class="dropdown-item" href="{% url 'account:login' %}">Giriş Yap</a>
-                            <a class="dropdown-item" href="{% url 'account:register' %}">Kayıt Ol</a>
+                            <a class="dropdown-item" href="{% url 'account:login' %}">{% trans "Login" %}</a>
+                            <a class="dropdown-item" href="{% url 'account:register' %}">{% trans "Signup" %}</a>
                         {% else %}
-                            <a class="dropdown-item" href="{% url 'account:edit-profile' %}">Profili Güncelle</a>
+                            <a class="dropdown-item" href="{% url 'account:edit-profile' %}">{% trans "Update Profile" %}</a>
                             {% if request.user.is_staff %}
-                                <a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
+                                <a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank">{% trans "Admin Panel" %}</a>
                             {% endif %}
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'account:logout' %}">Çıkış Yap</a>
+                            <a class="dropdown-item" href="{% url 'account:logout' %}">{% trans "Logout" %}</a>
                         {% endif %}
                     </div>
                 </li>

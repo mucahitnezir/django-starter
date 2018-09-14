@@ -1,24 +1,26 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 from django.urls import reverse
 from django.utils.text import slugify
+from django.utils.translation import ugettext_lazy as _
+
+from ckeditor.fields import RichTextField
 
 
 class Service(models.Model):
     category = models.ForeignKey('category.Category', on_delete=models.CASCADE, related_name='services',
-                                 verbose_name='Hizmet Kategorisi', limit_choices_to={'type': 'service'})
-    title = models.CharField(max_length=160, verbose_name='Hizmet Adı')
-    slug = models.SlugField(unique=True, verbose_name='Slug', editable=False)
-    short_description = models.TextField(verbose_name='Kısa Açıklama')
-    meta_description = models.TextField(verbose_name='Meta Açıklama')
-    content = RichTextField(verbose_name='Hizmet İçeriği')
-    image = models.ImageField(verbose_name='Hizmet Görseli')
-    published_at = models.DateTimeField(verbose_name='Yayınlanma Tarihi', auto_now_add=True)
+                                 verbose_name=_('Service Category'), limit_choices_to={'type': 'service'})
+    title = models.CharField(max_length=160, verbose_name=_('Service Name'))
+    slug = models.SlugField(unique=True, verbose_name=_('Slug'), editable=False)
+    short_description = models.TextField(verbose_name=_('Short Description'))
+    meta_description = models.TextField(verbose_name=_('Meta Description'))
+    content = RichTextField(verbose_name=_('Service Content'))
+    image = models.ImageField(verbose_name=_('Service Picture'))
+    published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True)
 
     class Meta:
         ordering = ['title']
-        verbose_name = 'Hizmet'
-        verbose_name_plural = 'Hizmetler'
+        verbose_name = _('Service')
+        verbose_name_plural = _('Services')
         db_table = 'services'
 
     def __str__(self):

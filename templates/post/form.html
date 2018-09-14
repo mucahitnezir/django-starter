@@ -1,6 +1,6 @@
 {% extends 'layout/base.html' %}
 
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags i18n %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
                         {% csrf_token %}
                         {{ form|crispy }}
                         {{ form.media }}
-                        <input type="submit" class="btn btn-primary" value="Kaydet">
+                        <input type="submit" class="btn btn-primary" value="{% trans "Save" %}">
                     </form>
                 </div>
             </div>

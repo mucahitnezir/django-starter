@@ -1,18 +1,18 @@
 {% extends 'layout/base.html' %}
 
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags i18n %}
 
 {% block content %}
 
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="card">
-                <div class="card-header">Kayıt Ol</div>
+                <div class="card-header">{% trans "Signup" %}</div>
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
                         {{ form|crispy }}
-                        <input type="submit" class="btn btn-success" value="Kayıt Ol">
+                        <input type="submit" class="btn btn-success" value="{% trans "Signup" %}">
                     </form>
                 </div>
             </div>

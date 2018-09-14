@@ -1,0 +1,34 @@
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+<footer class="bg-dark" id="main-footer">
+    <div class="container" id="footer-content">
+        <!--Left Area-->
+        <div id="footer-left">
+            <span class="text-muted">
+                Copyright &copy; 2018 - {% trans "This site is powered by:" %} <a href="https://mucahitnezir.com" class="alert-link text-muted"
+                                                       target="_blank">@mucahitnezir</a>.
+            </span>
+        </div>
+
+        <!--Right Area-->
+        <div id="footer-right">
+            <form class="form-inline language-form" action="{% url 'set_language' %}" method="POST">
+                <select class="form-control mr-2" name="language">
+                    {% for language in languages %}
+                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                                selected {% endif %}>
+                            {{ language.name_local }}
+                        </option>
+                    {% endfor %}
+                </select>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+            </form>
+        </div>
+
+    </div>
+</footer>

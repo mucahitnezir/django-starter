@@ -1,5 +1,7 @@
 {% extends 'layout/post.html' %}
 
+{% load i18n %}
+
 {% block beforeGrid %}
     {% include 'partials/title-detail.html' with title=category.name subtitle=category.description %}
 {% endblock %}
@@ -15,7 +17,7 @@
 
         {% include 'post/partials/pagination.html' %}
     {% else %}
-        <div class="bg-secondary p-3 rounded text-white">Hiçbir blog yazısı bulunamadı</div>
+        <div class="bg-secondary p-3 rounded text-white">{% trans "There is no blog post." %}</div>
     {% endif %}
 
 {% endblock %}

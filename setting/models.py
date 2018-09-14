@@ -1,12 +1,13 @@
 from django.db import models
 from django.template.defaultfilters import truncatechars
+from django.utils.translation import ugettext_lazy as _
 
 
 class Setting(models.Model):
-    key = models.CharField(max_length=32, unique=True, verbose_name='Parametre', editable=False)
-    description = models.CharField(max_length=255, verbose_name='Parametre Açıklaması', null=True, blank=True)
-    value = models.TextField(verbose_name='Parametre Değeri', null=True, blank=True)
-    updated_at = models.DateTimeField(verbose_name='Son Güncelleme Tarihi', auto_now=True, null=True, blank=True)
+    key = models.CharField(max_length=32, unique=True, verbose_name=_('Parameter'), editable=False)
+    description = models.CharField(max_length=255, verbose_name=_('Parameter Description'), null=True, blank=True)
+    value = models.TextField(verbose_name=_('Parameter Value'), null=True, blank=True)
+    updated_at = models.DateTimeField(verbose_name=_('Last Updated Date'), auto_now=True, null=True, blank=True)
 
     @property
     def admin_list_value(self):
@@ -15,8 +16,8 @@ class Setting(models.Model):
     class Meta:
         ordering = ['key']
         db_table = 'settings'
-        verbose_name = 'Ayar'
-        verbose_name_plural = 'Ayarlar'
+        verbose_name = _('Parameter')
+        verbose_name_plural = _('Parameters')
 
     def __str__(self):
         return self.key

@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils.translation import ugettext as _
+
 from .models import Post, Comment
 
 
@@ -13,7 +15,7 @@ class PostAdmin(admin.ModelAdmin):
         return obj.user.get_full_name()
 
     get_user.admin_order_field = 'user'  # Allows column order sorting
-    get_user.short_description = 'Yazar'  # Renames column head
+    get_user.short_description = _('Author')  # Renames column head
 
     class Meta:
         model = Post
@@ -29,7 +31,7 @@ class CommentAdmin(admin.ModelAdmin):
         return obj.post.title
 
     get_post.admin_order_field = 'post'
-    get_post.short_description = 'İçerik'
+    get_post.short_description = _('Post')
 
     class Meta:
         model = Comment

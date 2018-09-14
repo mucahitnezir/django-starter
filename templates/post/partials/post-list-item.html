@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="card mb-4">
     {% if post.image %}
         <img class="card-img-top mh-150 of-cover" src="{{ post.image.url }}">
@@ -5,16 +7,16 @@
     <div class="card-body">
         <h5 class="card-title">
             {{ post.title }}
-            <small>{{ post.published_at|timesince }} önce</small>
+            <small>{{ post.published_at|timesince }} {% trans "ago" %}</small>
         </h5>
         <p class="card-text">{{ post.meta_description|safe }}</p>
     </div>
     <div class="card-footer">
-        <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Detay</a>
+        <a href="{{ post.get_absolute_url }}" class="btn btn-primary">{% trans "Detail" %}</a>
         {% if request.user.is_authenticated %}
             {% if request.user.is_superuser or post.user == request.user %}
-                <a href="{{ post.get_update_url }}" class="btn btn-success">Güncelle</a>
-                <a href="{{ post.get_delete_url }}" class="btn btn-danger">Sil</a>
+                <a href="{{ post.get_update_url }}" class="btn btn-success">{% trans "Update" %}</a>
+                <a href="{{ post.get_delete_url }}" class="btn btn-danger">{% trans "Delete" %}</a>
             {% endif %}
         {% endif %}
     </div>

@@ -14,7 +14,7 @@
 
 /* Global Definitions */
 textarea {
-   resize: none;
+    resize: none;
 }
 
 /* Main Structure */
@@ -31,8 +31,16 @@ body {
 
 footer#main-footer {
     width: 100%;
-    padding: 15px 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     line-height: 1.8em;
+}
+
+#footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 /* Blog */
@@ -60,6 +68,7 @@ footer#main-footer {
 .contact-map-wrapper {
     max-height: 350px;
 }
+
 .contact-map-wrapper iframe {
     width: 100%;
     max-height: 350px;
@@ -68,6 +77,7 @@ footer#main-footer {
 .social-wrapper {
     display: flex;
 }
+
 a.social {
     border-radius: 5px;
     font-size: 14px;
@@ -82,24 +92,45 @@ a.social {
     text-decoration: none;
     transition: 300ms opacity;
 }
-a.social:nth-last-child { margin-right: 0; }
-a.social:hover { opacity: 0.7; }
-a.social.facebook { background-color: #3b5998; }
-a.social.twitter { background-color: #1da1f2; }
-a.social.instagram { background-color: #f0495a; }
-a.social.linkedin { background-color: #0077b5; }
+
+a.social:nth-last-child {
+    margin-right: 0;
+}
+
+a.social:hover {
+    opacity: 0.7;
+}
+
+a.social.facebook {
+    background-color: #3b5998;
+}
+
+a.social.twitter {
+    background-color: #1da1f2;
+}
+
+a.social.instagram {
+    background-color: #f0495a;
+}
+
+a.social.linkedin {
+    background-color: #0077b5;
+}
 
 /* About */
 #about-content p:last-child {
     margin-bottom: 0;
 }
+
 .team-member-fullname {
     margin-bottom: 3px;
 }
+
 .team-member-title {
     color: #818181;
     margin-bottom: 15px;
 }
+
 .team-member-icons:before {
     content: "";
     display: block;
@@ -108,10 +139,33 @@ a.social.linkedin { background-color: #0077b5; }
     height: 1px;
     background-color: #f0495a;
 }
+
 .team-member-icons a {
     color: #bcbcbc;
     transition: 300ms color;
     font-size: 18px;
     line-height: 18px;
 }
-.team-member-icons a:hover { color: #f0495a; }
+
+.team-member-icons a:hover {
+    color: #f0495a;
+}
+
+/* Responsive Definitions */
+@media (max-width: 767px) {
+    /* Footer */
+    #footer-left, #footer-right {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    #footer-left {
+        margin-bottom: 8px;
+    }
+
+    .language-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+    }
+}

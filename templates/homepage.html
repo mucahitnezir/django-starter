@@ -1,12 +1,21 @@
 {% extends 'layout/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
     {% if request.user.is_authenticated %}
-        <p class="bg-info text-white p-3 rounded">Hello, {{ request.user.get_full_name }}</p>
+        <p class="bg-info text-white p-3 rounded">
+            {% trans "Hello" %},
+            {% if request.user.get_full_name|length > 0 %}
+                {{ request.user.get_full_name }}
+            {% else %}
+                {{ request.user.username }}
+            {% endif %}
+        </p>
     {% else %}
         <p class="bg-primary text-white p-3 rounded">
-            Hello there, do you want to <a href="{% url 'account:register' %}" class="alert-link text-light">signup</a>
-            or <a href="{% url 'account:login' %}" class="alert-link text-light">login</a>?
+            {% trans "homepage_message" %} <a href="{% url 'account:register' %}" class="alert-link text-light">{% trans "Signup"|lower %}</a>
+            {% trans "or" %} <a href="{% url 'account:login' %}" class="alert-link text-light">{% trans "Login"|lower %}</a>
         </p>
     {% endif %}
 {% endblock %}

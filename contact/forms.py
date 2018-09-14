@@ -1,13 +1,15 @@
+from django import forms
+from django.utils.translation import ugettext_lazy as _
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Row, Field, Layout
-from django import forms
 from captcha.fields import ReCaptchaField
+
 from .models import Message
 
 
 class ContactForm(forms.ModelForm):
-
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(label=_('Captcha'))
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)

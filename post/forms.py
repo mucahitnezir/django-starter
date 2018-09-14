@@ -1,13 +1,15 @@
+from django import forms
+from django.utils.translation import ugettext_lazy as _
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Field
-from django import forms
 from captcha.fields import ReCaptchaField
 
 from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(label=_('Captcha'))
 
     class Meta:
         model = Post
@@ -21,7 +23,7 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(label=_('Captcha'))
 
     def __init__(self, *args, **kwargs):
         super(CommentForm, self).__init__(*args, **kwargs)

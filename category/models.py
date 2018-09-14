@@ -1,28 +1,30 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from django.utils.translation import ugettext_lazy as _
+
 from ckeditor.fields import RichTextField
 
 
 CATEGORY_TYPES = (
-    ('post', 'Blog Kategorisi'),
-    ('portfolio', 'Portfolyo Kategorisi'),
-    ('service', 'Hizmet Kategorisi'),
+    ('post', _('Post Category')),
+    ('portfolio', _('Portfolio Category')),
+    ('service', _('Service Category')),
 )
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=120, verbose_name='Kategori Adı')
-    slug = models.SlugField(unique=True, verbose_name='Slug', editable=False)
-    type = models.CharField(max_length=9, verbose_name='Kategori Tipi', choices=CATEGORY_TYPES, default='post')
-    description = RichTextField(verbose_name='Kategori Açıklaması', null=True, blank=True)
-    meta_description = models.TextField(verbose_name='Meta Description', null=True, blank=True)
-    published_at = models.DateTimeField(verbose_name='Oluşturulma Tarihi', auto_now_add=True)
+    name = models.CharField(max_length=120, verbose_name=_('Category Name'))
+    slug = models.SlugField(unique=True, verbose_name=_('Slug'), editable=False)
+    type = models.CharField(max_length=9, verbose_name=_('Category Type'), choices=CATEGORY_TYPES, default='post')
+    description = RichTextField(verbose_name=_('Category Description'), null=True, blank=True)
+    meta_description = models.TextField(verbose_name=_('Meta Description'), null=True, blank=True)
+    published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True)
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Kategori'
-        verbose_name_plural = 'Kategoriler'
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
         db_table = 'categories'
 
     def __str__(self):
