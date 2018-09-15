@@ -15,16 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf import settings
-from django.conf.urls import url, include
-from django.conf.urls.i18n import i18n_patterns
-from django.conf.urls.static import static
+
 from django.urls import path
+from django.conf.urls import url, include
+from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
+
+from django.contrib.sitemaps import views as sitemaps_views
+from baseapp.sitemaps import sitemaps
 
 from home.views import home_view
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls, name='admin'),
+    # Sitemap
+    path('sitemap.xml',sitemaps_views.index, {'sitemaps': sitemaps, 'sitemap_url_name': 'sitemaps'}),
+    path('sitemap-<section>.xml', sitemaps_views.sitemap, {'sitemaps': sitemaps}, name='sitemaps'),
 ]
 
 urlpatterns += i18n_patterns(
