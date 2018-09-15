@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /i18n
+Disallow: /admin
+
+Sitemap: https://mucahitnezir.pythonanywhere.com/sitemap.xml
