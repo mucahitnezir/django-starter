@@ -1,5 +1,15 @@
 $(document).ready(function () {
 
+    // Header menu active class
+    const urlPath = window.location.pathname;
+    const activeLink = $("ul#header-menu a[href='"+ urlPath +"']");
+    if (activeLink.hasClass('dropdown-item')) {
+        activeLink.addClass('active');
+        activeLink.parent().prev().addClass('active');
+    } else {
+        activeLink.parent().addClass('active');
+    }
+
     // Portfolio isotope
     if ($.fn.isotope) {
         const $grid = $('#portfolio-list').isotope({
