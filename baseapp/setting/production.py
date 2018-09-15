@@ -4,7 +4,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['your-domain.com']
+ALLOWED_HOSTS = ['mucahitnezir.pythonanywhere.com']
 
 
 # Database
@@ -12,26 +12,17 @@ ALLOWED_HOSTS = ['your-domain.com']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db-name',
-        'USER': 'user-name',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.setdefault('DB_HOST', 'localhost'),
+        'PORT': os.environ.setdefault('DB_PORT', '5432')
     }
 }
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 
 # RECAPTCHA
 # https://pypi.org/project/django-recaptcha/
 
-RECAPTCHA_PUBLIC_KEY = 'prod-public-key'
-RECAPTCHA_PRIVATE_KEY = 'prod-private-key'
-NOCAPTCHA = True
 RECAPTCHA_USE_SSL = True
