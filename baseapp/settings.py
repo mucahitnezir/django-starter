@@ -6,7 +6,7 @@ environment = os.environ.setdefault('ENVIRONMENT', 'development')
 
 # Load settings file
 if environment == 'development':
-    from.setting.development import *
+    from .setting.development import *
 elif environment == 'production':
     from .setting.production import *
 else:
