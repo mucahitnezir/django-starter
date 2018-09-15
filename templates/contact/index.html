@@ -5,7 +5,7 @@
 {% block content %}
 
     <div class="contact-map-wrapper mb-4">
-        {{ parameters.gmap_iframe_code|safe }}
+        {{ params.gmap_iframe_code|safe }}
     </div>
 
     <div class="row">
@@ -27,26 +27,26 @@
                     <table class="table table-bordered table-striped mb-0">
                         <tr>
                             <th>{% trans "Phone Number" %}</th>
-                            <td>{{ parameters.phone_number }}</td>
+                            <td>{{ params.phone_number }}</td>
                         </tr>
                         <tr>
                             <th>{% trans "Email Address" %}</th>
-                            <td>{{ parameters.email_address }}</td>
+                            <td>{{ params.email_address }}</td>
                         </tr>
                         <tr>
                             <th>{% trans "Social Media" %}</th>
                             <td>
                                 <div class="social-wrapper">
-                                    <a class="social facebook" href="{{ parameters.facebook_url }}">
+                                    <a class="social facebook" href="{{ params.facebook_url }}">
                                         <i class="fa fa-facebook"></i>
                                     </a>
-                                    <a class="social twitter" href="{{ parameters.twitter_url }}">
+                                    <a class="social twitter" href="{{ params.twitter_url }}">
                                         <i class="fa fa-twitter"></i>
                                     </a>
-                                    <a class="social instagram" href="{{ parameters.instagram_url }}">
+                                    <a class="social instagram" href="{{ params.instagram_url }}">
                                         <i class="fa fa-instagram"></i>
                                     </a>
-                                    <a class="social linkedin" href="{{ parameters.linkedin_url }}">
+                                    <a class="social linkedin" href="{{ params.linkedin_url }}">
                                         <i class="fa fa-linkedin"></i>
                                     </a>
                                 </div>

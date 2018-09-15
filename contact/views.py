@@ -41,7 +41,7 @@ def contact_index(request):
         context = {
             'title': _('Contact'),
             'form': form,
-            'parameters': parameters
+            'params': parameters
         }
         # Render page
         return render(request, 'contact/index.html', context)
