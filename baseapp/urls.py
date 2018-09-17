@@ -20,6 +20,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.sitemaps import views as sitemaps_views
 from django.views.generic import TemplateView
@@ -40,12 +41,12 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^$', home_view, name='home'),
-    path('about/', include('about.urls')),
-    path('contact/', include('contact.urls')),
-    path('blog/', include('post.urls')),
-    path('accounts/', include('account.urls')),
-    path('portfolio/', include('portfolio.urls')),
-    path('service/', include('service.urls')),
+    path(_('about/'), include('about.urls')),
+    path(_('contact/'), include('contact.urls')),
+    path(_('blog/'), include('post.urls')),
+    path(_('accounts/'), include('account.urls')),
+    path(_('portfolio/'), include('portfolio.urls')),
+    path(_('service/'), include('service.urls')),
     prefix_default_language=True
 )
 

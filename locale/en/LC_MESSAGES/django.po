@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-14 23:25+0300\n"
+"POT-Creation-Date: 2018-09-18 00:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mücahit Nezir <mucahitnezir@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,6 +91,22 @@ msgstr ""
 msgid "Missing password field(s)."
 msgstr ""
 
+#: .\account\urls.py:9
+msgid "^login$"
+msgstr ""
+
+#: .\account\urls.py:10
+msgid "^register$"
+msgstr ""
+
+#: .\account\urls.py:11
+msgid "^logout$"
+msgstr ""
+
+#: .\account\urls.py:12
+msgid "^edit-profile$"
+msgstr ""
+
 #: .\account\views.py:18
 msgid "Successful login"
 msgstr "You have logged successfully."
@@ -123,6 +139,30 @@ msgstr "You are logged out."
 #: .\templates\account\edit-profile.html:15
 #: .\templates\layout\partials\header.html:53
 msgid "Update Profile"
+msgstr ""
+
+#: .\baseapp\urls.py:44
+msgid "about/"
+msgstr ""
+
+#: .\baseapp\urls.py:45
+msgid "contact/"
+msgstr ""
+
+#: .\baseapp\urls.py:46
+msgid "blog/"
+msgstr ""
+
+#: .\baseapp\urls.py:47
+msgid "accounts/"
+msgstr ""
+
+#: .\baseapp\urls.py:48
+msgid "portfolio/"
+msgstr ""
+
+#: .\baseapp\urls.py:49
+msgid "service/"
 msgstr ""
 
 #: .\category\apps.py:7
@@ -279,6 +319,18 @@ msgstr ""
 
 #: .\post\models.py:72 .\templates\post\partials\comment-list.html:3
 msgid "Comments"
+msgstr ""
+
+#: .\post\urls.py:10
+msgid "^create/$"
+msgstr ""
+
+#: .\post\urls.py:12
+msgid "^(?P<id>\\d+)/update$"
+msgstr ""
+
+#: .\post\urls.py:13
+msgid "^(?P<id>\\d+)/delete$"
 msgstr ""
 
 #: .\post\views.py:58

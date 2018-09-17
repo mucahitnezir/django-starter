@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-14 23:25+0300\n"
+"POT-Creation-Date: 2018-09-18 00:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mücahit Nezir <mucahitnezir@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,6 +91,22 @@ msgstr "Şifreler birbirleri ile eşleşmiyor."
 msgid "Missing password field(s)."
 msgstr "Eksik şifre gönderildi."
 
+#: .\account\urls.py:9
+msgid "^login$"
+msgstr "^giris-yap$"
+
+#: .\account\urls.py:10
+msgid "^register$"
+msgstr "^kayit-ol$"
+
+#: .\account\urls.py:11
+msgid "^logout$"
+msgstr "^cikis-yap$"
+
+#: .\account\urls.py:12
+msgid "^edit-profile$"
+msgstr "^profil-guncelle$"
+
 #: .\account\views.py:18
 msgid "Successful login"
 msgstr "Giriş başarılı bir şekilde yapıldı."
@@ -124,6 +140,30 @@ msgstr "Profil bilgileri başarılı bir şekilde güncellendi."
 #: .\templates\layout\partials\header.html:53
 msgid "Update Profile"
 msgstr "Profili Güncelle"
+
+#: .\baseapp\urls.py:44
+msgid "about/"
+msgstr "hakkimizda/"
+
+#: .\baseapp\urls.py:45
+msgid "contact/"
+msgstr "iletisim/"
+
+#: .\baseapp\urls.py:46
+msgid "blog/"
+msgstr ""
+
+#: .\baseapp\urls.py:47
+msgid "accounts/"
+msgstr "uyelik/"
+
+#: .\baseapp\urls.py:48
+msgid "portfolio/"
+msgstr "portfolyo/"
+
+#: .\baseapp\urls.py:49
+msgid "service/"
+msgstr "hizmet/"
 
 #: .\category\apps.py:7
 msgid "Category Management"
@@ -280,6 +320,18 @@ msgstr "Onay Durumu"
 #: .\post\models.py:72 .\templates\post\partials\comment-list.html:3
 msgid "Comments"
 msgstr "Yorumlar"
+
+#: .\post\urls.py:10
+msgid "^create/$"
+msgstr "^olustur/$"
+
+#: .\post\urls.py:12
+msgid "^(?P<id>\\d+)/update$"
+msgstr "^(?P<id>\\d+)/guncelle"
+
+#: .\post\urls.py:13
+msgid "^(?P<id>\\d+)/delete$"
+msgstr "^(?P<id>\\d+)/sil"
 
 #: .\post\views.py:58
 msgid "Comment is created successfully"
