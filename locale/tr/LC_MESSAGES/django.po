@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-18 00:34+0300\n"
+"POT-Creation-Date: 2018-09-18 00:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mücahit Nezir <mucahitnezir@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -475,8 +475,13 @@ msgstr "Hiç blog yazısı bulunamadı."
 msgid "ago"
 msgstr "önce"
 
-#: .\templates\post\detail.html:25
-#: .\templates\post\partials\post-list-item.html:19
+#: .\templates\post\detail.html:26
+#: .\templates\post\partials\post-list-item.html:20
+msgid "Are you sure you want to delete this post?"
+msgstr "Bu blog içeriğini silmek istediğinize emin misiniz?"
+
+#: .\templates\post\detail.html:26
+#: .\templates\post\partials\post-list-item.html:20
 msgid "Delete"
 msgstr "Sil"
 

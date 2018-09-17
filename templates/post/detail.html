@@ -22,7 +22,8 @@
         {% if request.user.is_authenticated %}
             <div class="card-footer">
                 <a href="{{ post.get_update_url }}" class="btn btn-success">{% trans "Update" %}</a>
-                <a href="{{ post.get_delete_url }}" class="btn btn-danger">{% trans "Delete" %}</a>
+                <a href="{{ post.get_delete_url }}" class="btn btn-danger"
+                   onclick="return confirm('{% trans "Are you sure you want to delete this post?" %}')">{% trans "Delete" %}</a>
             </div>
         {% endif %}
     </div>
