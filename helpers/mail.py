@@ -32,7 +32,7 @@ class MailHelper:
 
         mail = Mail()
         mail.from_email = Email('contact-form@mucahitnezir.com', message.full_name)
-        mail.template_id = 'd-ed945c87123d4e44828fbfbb4f29e1a8'
+        mail.template_id = 'd-e06aabb2535640a2b0fac0621af11c9d'
         mail.reply_to = Email(message.email_address, message.full_name)
         mail.add_personalization(p)
 
