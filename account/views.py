@@ -4,25 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
 
-from .forms import LoginForm, RegisterForm, EditProfileForm
-
-
-def login_view(request):
-    form = LoginForm(request.POST or None)
-    redirect_url = request.GET.get('next', 'home')
-    if form.is_valid():
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
-        login(request, user)
-        messages.success(request, _('Successful login'))
-        return redirect(redirect_url)
-
-    context = {
-        'form': form,
-        'title': _('Login')
-    }
-    return render(request, 'account/login.html', context)
+from .forms import RegisterForm, EditProfileForm
 
 
 def register_view(request):
@@ -44,12 +26,6 @@ def register_view(request):
         'title': _('Signup')
     }
     return render(request, 'account/register.html', context)
-
-
-def logout_view(request):
-    logout(request)
-    messages.success(request, _('Successful logout'))
-    return redirect('account:login')
 
 
 @login_required

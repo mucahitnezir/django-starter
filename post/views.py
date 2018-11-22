@@ -71,7 +71,7 @@ def post_detail(request, slug):
     return render(request, 'post/detail.html', context)
 
 
-@login_required(login_url='account:login')
+@login_required
 def post_create(request):
     # Save form or create form instance
     if request.method == 'POST':
@@ -94,7 +94,7 @@ def post_create(request):
     return render(request, 'post/form.html', context)
 
 
-@login_required(login_url='account:login')
+@login_required
 def post_update(request, id):
     # Get post
     post = get_object_or_404(Post, id=id)
@@ -117,7 +117,7 @@ def post_update(request, id):
         return redirect('home')
 
 
-@login_required(login_url='account:login')
+@login_required
 def post_delete(request, id):
     # Get post
     post = get_object_or_404(Post, id=id)
