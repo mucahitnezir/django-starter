@@ -43,6 +43,7 @@ docs/_build/
 db.sqlite3
 media
 venv
+.env
 assets
 .DS_Store
 bower_components/
