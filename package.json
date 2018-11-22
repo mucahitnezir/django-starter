@@ -1,0 +1,26 @@
+{
+  "name": "django-starter",
+  "version": "1.0.0",
+  "description": "This is basic django starter application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mucahitnezir/django-starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mucahitnezir/django-starter/issues"
+  },
+  "homepage": "https://github.com/mucahitnezir/django-starter#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "font-awesome": "^4.7.0",
+    "isotope-layout": "^3.0.6",
+    "jquery": "^3.3.1"
+  }
+}
