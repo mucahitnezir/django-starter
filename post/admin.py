@@ -4,12 +4,13 @@ from django.utils.translation import ugettext as _
 from .models import Post, Comment
 
 
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'slug', 'category', 'get_user', 'published_at']
     list_display_links = ['id']
+    list_editable = ['title', 'category']
     list_filter = ['published_at', 'category']
     search_fields = ['title', 'content']
-    list_editable = ['title', 'category']
 
     def get_user(self, obj):
         return obj.user.get_full_name()
@@ -21,10 +22,11 @@ class PostAdmin(admin.ModelAdmin):
         model = Post
 
 
+@admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['id', 'full_name', 'email_address', 'get_post', 'published_at', 'is_confirmed']
-    list_filter = ['is_confirmed', 'post']
     list_editable = ['is_confirmed']
+    list_filter = ['is_confirmed', 'post']
     search_fields = ['full_name', 'email_address', 'content']
 
     def get_post(self, obj):
@@ -35,7 +37,3 @@ class CommentAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Comment
-
-
-admin.site.register(Post, PostAdmin)
-admin.site.register(Comment, CommentAdmin)

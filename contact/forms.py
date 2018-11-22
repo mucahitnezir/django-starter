@@ -21,8 +21,7 @@ class ContactForm(forms.ModelForm):
                 Field('last_name', wrapper_class='col-md-6')
             ),
             Row(
-                Field('email_address', wrapper_class='col-md-6'),
-                Field('phone_number', wrapper_class='col-md-6')
+                Field('email_address', wrapper_class='col-md-12')
             ),
             Row(
                 Field('subject', wrapper_class='col-md-12')
@@ -41,7 +40,6 @@ class ContactForm(forms.ModelForm):
             'first_name',
             'last_name',
             'email_address',
-            'phone_number',
             'subject',
             'message',
         ]

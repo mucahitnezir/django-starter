@@ -32,7 +32,7 @@
     "fields": {
       "key": "gmap_iframe_code",
       "description": "Google map iframe kodu",
-      "value": "+90(555) 555 55 55"
+      "value": "<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.3873077668177!2d29.036265715654817!3d41.01678172684978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab802633feeb7%3A0x5e020493e9b2949f!2s%C3%9Csk%C3%BCdar+Fikir+Sanat+Merkezi!5e0!3m2!1str!2str!4v1536752159331' width='1200' height='350' frameborder='0' style='border:0' allowfullscreen></iframe>"
     }
   },
   {

@@ -6,7 +6,6 @@ class Message(models.Model):
     first_name = models.CharField(max_length=100, verbose_name=_('First Name'))
     last_name = models.CharField(max_length=100, verbose_name=_('Last Name'))
     email_address = models.EmailField(verbose_name=_('Email Address'))
-    phone_number = models.CharField(max_length=18, verbose_name=_('Phone Number'))
     subject = models.CharField(max_length=255, verbose_name=_('Subject'))
     message = models.TextField(verbose_name=_('Your Message'))
     published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True)

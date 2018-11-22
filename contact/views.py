@@ -1,9 +1,10 @@
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext as _
+from django.conf import settings
 
-from .forms import ContactForm
-from helpers.mail import MailHelper
+from contact.forms import ContactForm
 from setting.models import Setting
 
 
@@ -14,8 +15,9 @@ def contact_index(request):
             # Get message
             message = form.save(commit=False)
             # Create mail helper instance and send mail
-            mail_helper = MailHelper()
-            send = mail_helper.send_contact_form_mail(message)
+            receiver = Setting.get_one('contact_form_notification_mail')
+            sender = settings.SENDGRID_SENDER_EMAIL
+            send = send_mail(message.subject, message.message, sender, [receiver], fail_silently=True)
             if send:
                 message.save()
                 messages.success(request, _('Message created successfully!'))
@@ -35,7 +37,8 @@ def contact_index(request):
             }
         form = ContactForm(initial=initial_form_data)
         # Get contact parameters
-        params = ['facebook_url', 'twitter_url', 'linkedin_url', 'instagram_url', 'phone_number', 'email_address', 'gmap_iframe_code']
+        params = ['facebook_url', 'twitter_url', 'linkedin_url', 'instagram_url', 'phone_number', 'email_address',
+                  'gmap_iframe_code']
         parameters = Setting.get_multiple(params)
         # Page context
         context = {
