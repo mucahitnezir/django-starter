@@ -18,7 +18,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Load environment variables
 env = environ.Env()
-env.read_env(os.path.join(BASE_DIR, '.env'))
+env_file = os.path.join(BASE_DIR, '.env')
+if os.path.isfile(env_file):
+    env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -37,11 +39,11 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [])
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.str('DB_NAME'),
-        'USER': env.str('DB_USER'),
-        'PASSWORD': env.str('DB_PASSWORD'),
-        'HOST': env.str('DB_HOST', 'localhost'),
-        'PORT': env.str('DB_PORT', '5432')
+        'NAME': env.str('PSQL_DB_NAME'),
+        'USER': env.str('PSQL_DB_USER'),
+        'PASSWORD': env.str('PSQL_DB_PASSWORD'),
+        'HOST': env.str('PSQL_DB_HOST', 'localhost'),
+        'PORT': env.str('PSQL_DB_PORT', '5432')
     }
 }
 
