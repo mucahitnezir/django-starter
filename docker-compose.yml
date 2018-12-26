@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    restart: on-failure:10
+    container_name: django_starter_web
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+  db:
+    image: postgres:9.6
+    restart: always
+    container_name: django_starter_psql
+    ports:
+      - "${PSQL_DB_PORT}:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${PSQL_DB_NAME}
+      POSTGRES_USER: ${PSQL_DB_USER}
+      POSTGRES_PASSWORD: ${PSQL_DB_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
