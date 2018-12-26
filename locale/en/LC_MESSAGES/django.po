@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-18 00:49+0300\n"
+"POT-Creation-Date: 2018-12-26 13:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mücahit Nezir <mucahitnezir@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,497 +18,478 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\about\apps.py:7 .\about\views.py:11
-#: .\templates\layout\partials\header.html:16
+#: about/apps.py:7 about/views.py:11 templates/layout/partials/header.html:16
 msgid "About"
 msgstr ""
 
-#: .\about\models.py:6 .\contact\models.py:6
+#: about/models.py:6 contact/models.py:6
 msgid "First Name"
 msgstr ""
 
-#: .\about\models.py:7 .\contact\models.py:7
+#: about/models.py:7 contact/models.py:7
 msgid "Last Name"
 msgstr ""
 
-#: .\about\models.py:8
+#: about/models.py:8
 msgid "Degree"
 msgstr ""
 
-#: .\about\models.py:9 .\contact\models.py:8 .\post\models.py:64
-#: .\templates\contact\index.html:33
+#: about/models.py:9 contact/models.py:8 post/models.py:64
+#: templates/contact/index.html:33
 msgid "Email Address"
 msgstr ""
 
-#: .\about\models.py:10
+#: about/models.py:10
 msgid "Linkedin Address"
 msgstr ""
 
-#: .\about\models.py:11
+#: about/models.py:11
 msgid "Profile Photo"
 msgstr ""
 
-#: .\about\models.py:12 .\category\models.py:22 .\contact\models.py:12
-#: .\portfolio\models.py:17 .\post\models.py:19 .\post\models.py:67
-#: .\service\models.py:18 .\templates\portfolio\detail.html:41
+#: about/models.py:12 category/models.py:22 contact/models.py:11
+#: portfolio/models.py:17 post/models.py:19 post/models.py:67
+#: service/models.py:18 templates/portfolio/detail.html:41
 msgid "Publishing Date"
 msgstr ""
 
-#: .\about\models.py:21
+#: about/models.py:21
 msgid "Team Member"
 msgstr ""
 
-#: .\about\models.py:22
+#: about/models.py:22
 msgid "Team Members"
 msgstr ""
 
-#: .\account\forms.py:10
-msgid "Username"
-msgstr ""
-
-#: .\account\forms.py:11 .\account\forms.py:26
+#: account/forms.py:9
 msgid "Password"
 msgstr ""
 
-#: .\account\forms.py:12 .\account\forms.py:28 .\account\forms.py:55
-#: .\contact\forms.py:12 .\post\forms.py:12 .\post\forms.py:26
-msgid "Captcha"
-msgstr ""
-
-#: .\account\forms.py:21
-msgid "Invalid username or password"
-msgstr ""
-
-#: .\account\forms.py:27
+#: account/forms.py:10
 msgid "Password Repeat"
 msgstr ""
 
-#: .\account\forms.py:47
+#: account/forms.py:11 account/forms.py:38 contact/forms.py:12 post/forms.py:12
+#: post/forms.py:26
+msgid "Captcha"
+msgstr ""
+
+#: account/forms.py:30
 msgid "Passwords do not match."
 msgstr ""
 
-#: .\account\forms.py:49
+#: account/forms.py:32
 msgid "Missing password field(s)."
 msgstr ""
 
-#: .\account\urls.py:9
-msgid "^login$"
+#: account/urls.py:10
+msgid "login/"
 msgstr ""
 
-#: .\account\urls.py:10
-msgid "^register$"
+#: account/urls.py:11
+msgid "register/"
 msgstr ""
 
-#: .\account\urls.py:11
-msgid "^logout$"
+#: account/urls.py:12
+msgid "logout/"
 msgstr ""
 
-#: .\account\urls.py:12
-msgid "^edit-profile$"
+#: account/urls.py:13
+msgid "edit-profile/"
 msgstr ""
 
-#: .\account\views.py:18
-msgid "Successful login"
-msgstr "You have logged successfully."
-
-#: .\account\views.py:23 .\templates\account\login.html:10
-#: .\templates\account\login.html:15 .\templates\homepage.html:18
-#: .\templates\layout\partials\header.html:50
-msgid "Login"
-msgstr ""
-
-#: .\account\views.py:39
+#: account/views.py:21
 msgid "Successful signup"
 msgstr "You have registered successfully."
 
-#: .\account\views.py:44 .\templates\account\register.html:10
-#: .\templates\account\register.html:15 .\templates\homepage.html:17
-#: .\templates\layout\partials\header.html:51
+#: account/views.py:26 templates/account/register.html:10
+#: templates/account/register.html:15 templates/homepage.html:17
+#: templates/layout/partials/header.html:51
 msgid "Signup"
 msgstr ""
 
-#: .\account\views.py:51
-msgid "Successful logout"
-msgstr ""
-
-#: .\account\views.py:60
+#: account/views.py:36
 msgid "Successful updating profile"
 msgstr "You are logged out."
 
-#: .\account\views.py:63 .\templates\account\edit-profile.html:10
-#: .\templates\account\edit-profile.html:15
-#: .\templates\layout\partials\header.html:53
+#: account/views.py:39 templates/account/edit-profile.html:10
+#: templates/account/edit-profile.html:15
+#: templates/layout/partials/header.html:53
 msgid "Update Profile"
 msgstr ""
 
-#: .\baseapp\urls.py:44
+#: baseapp/urls.py:44
 msgid "about/"
 msgstr ""
 
-#: .\baseapp\urls.py:45
+#: baseapp/urls.py:45
 msgid "contact/"
 msgstr ""
 
-#: .\baseapp\urls.py:46
+#: baseapp/urls.py:46
 msgid "blog/"
 msgstr ""
 
-#: .\baseapp\urls.py:47
+#: baseapp/urls.py:47
 msgid "accounts/"
 msgstr ""
 
-#: .\baseapp\urls.py:48
+#: baseapp/urls.py:48
 msgid "portfolio/"
 msgstr ""
 
-#: .\baseapp\urls.py:49
+#: baseapp/urls.py:49
 msgid "service/"
 msgstr ""
 
-#: .\category\apps.py:7
+#: category/apps.py:7
 msgid "Category Management"
 msgstr ""
 
-#: .\category\models.py:10 .\post\models.py:12
+#: category/models.py:10 post/models.py:12
 msgid "Post Category"
 msgstr ""
 
-#: .\category\models.py:11 .\portfolio\models.py:11
+#: category/models.py:11 portfolio/models.py:11
 msgid "Portfolio Category"
 msgstr ""
 
-#: .\category\models.py:12 .\service\models.py:11
+#: category/models.py:12 service/models.py:11
 msgid "Service Category"
 msgstr ""
 
-#: .\category\models.py:17
+#: category/models.py:17
 msgid "Category Name"
 msgstr ""
 
-#: .\category\models.py:18 .\portfolio\models.py:13 .\post\models.py:18
-#: .\service\models.py:13
+#: category/models.py:18 portfolio/models.py:13 post/models.py:18
+#: service/models.py:13
 msgid "Slug"
 msgstr ""
 
-#: .\category\models.py:19
+#: category/models.py:19
 msgid "Category Type"
 msgstr ""
 
-#: .\category\models.py:20
+#: category/models.py:20
 msgid "Category Description"
 msgstr ""
 
-#: .\category\models.py:21 .\portfolio\models.py:14 .\service\models.py:15
+#: category/models.py:21 portfolio/models.py:14 service/models.py:15
 msgid "Meta Description"
 msgstr ""
 
-#: .\category\models.py:26 .\templates\portfolio\detail.html:37
+#: category/models.py:26 templates/portfolio/detail.html:37
 msgid "Category"
 msgstr ""
 
-#: .\category\models.py:27
+#: category/models.py:27
 msgid "Categories"
 msgstr ""
 
-#: .\contact\apps.py:7 .\contact\views.py:42
-#: .\templates\layout\partials\header.html:42
+#: contact/apps.py:7 contact/views.py:45
+#: templates/layout/partials/header.html:42
 msgid "Contact"
 msgstr ""
 
-#: .\contact\models.py:9 .\templates\contact\index.html:29
-msgid "Phone Number"
-msgstr ""
-
-#: .\contact\models.py:10
+#: contact/models.py:9
 msgid "Subject"
 msgstr ""
 
-#: .\contact\models.py:11
+#: contact/models.py:10
 msgid "Your Message"
 msgstr ""
 
-#: .\contact\models.py:22
+#: contact/models.py:21
 msgid "Message"
 msgstr ""
 
-#: .\contact\models.py:23
+#: contact/models.py:22
 msgid "Messages"
 msgstr ""
 
-#: .\contact\views.py:21
+#: contact/views.py:23
 msgid "Message created successfully!"
 msgstr ""
 
-#: .\contact\views.py:23
+#: contact/views.py:25
 msgid "Email did not send!"
 msgstr ""
 
-#: .\contact\views.py:25
+#: contact/views.py:27
 msgid "Message did not created!"
 msgstr ""
 
-#: .\home\views.py:7 .\templates\layout\partials\header.html:13
+#: home/views.py:7 templates/layout/partials/header.html:13
 msgid "Homepage"
 msgstr ""
 
-#: .\portfolio\apps.py:7
+#: portfolio/apps.py:7
 msgid "Portfolio Management"
 msgstr ""
 
-#: .\portfolio\models.py:12
+#: portfolio/models.py:12
 msgid "Portfolio Title"
 msgstr ""
 
-#: .\portfolio\models.py:15
+#: portfolio/models.py:15
 msgid "Portfolio Description"
 msgstr ""
 
-#: .\portfolio\models.py:16
+#: portfolio/models.py:16
 msgid "Portfolio Image"
 msgstr ""
 
-#: .\portfolio\models.py:21 .\portfolio\views.py:10
-#: .\templates\layout\partials\header.html:22
+#: portfolio/models.py:21 portfolio/views.py:10
+#: templates/layout/partials/header.html:22
 msgid "Portfolio"
 msgstr ""
 
-#: .\portfolio\models.py:22
+#: portfolio/models.py:22
 msgid "Portfolios"
 msgstr ""
 
-#: .\post\admin.py:18 .\post\models.py:14 .\templates\post\detail.html:18
+#: post/admin.py:19 post/models.py:14 templates/post/detail.html:18
 msgid "Author"
 msgstr ""
 
-#: .\post\admin.py:34 .\post\models.py:27 .\post\models.py:62
+#: post/admin.py:36 post/models.py:27 post/models.py:62
 msgid "Post"
 msgstr ""
 
-#: .\post\apps.py:7
+#: post/apps.py:7
 msgid "Post Management"
 msgstr ""
 
-#: .\post\models.py:15
+#: post/models.py:15
 msgid "Post Title"
 msgstr ""
 
-#: .\post\models.py:16
+#: post/models.py:16
 msgid "Post Content"
 msgstr ""
 
-#: .\post\models.py:17
+#: post/models.py:17
 msgid "Post Picture"
 msgstr ""
 
-#: .\post\models.py:28 .\post\views.py:43
-#: .\templates\layout\partials\header.html:34
+#: post/models.py:28 post/views.py:43 templates/layout/partials/header.html:34
 msgid "Posts"
 msgstr ""
 
-#: .\post\models.py:63
+#: post/models.py:63
 msgid "Full Name"
 msgstr ""
 
-#: .\post\models.py:65 .\post\models.py:71
+#: post/models.py:65 post/models.py:71
 msgid "Comment"
 msgstr ""
 
-#: .\post\models.py:66
+#: post/models.py:66
 msgid "Approval Status"
 msgstr ""
 
-#: .\post\models.py:72 .\templates\post\partials\comment-list.html:3
+#: post/models.py:72 templates/post/partials/comment-list.html:3
 msgid "Comments"
 msgstr ""
 
-#: .\post\urls.py:10
-msgid "^create/$"
+#: post/urls.py:10
+msgid "create/"
 msgstr ""
 
-#: .\post\urls.py:12
-msgid "^(?P<id>\\d+)/update$"
+#: post/urls.py:12
+msgid "<id>/update/"
 msgstr ""
 
-#: .\post\urls.py:13
-msgid "^(?P<id>\\d+)/delete$"
+#: post/urls.py:13
+msgid "<id>/delete/"
 msgstr ""
 
-#: .\post\views.py:58
+#: post/views.py:58
 msgid "Comment is created successfully"
 msgstr ""
 
-#: .\post\views.py:84
+#: post/views.py:84
 msgid "Post created successfully"
 msgstr ""
 
-#: .\post\views.py:90 .\templates\layout\partials\header.html:36
+#: post/views.py:90 templates/layout/partials/header.html:36
 msgid "Create Post"
 msgstr ""
 
-#: .\post\views.py:107
+#: post/views.py:107
 msgid "Post updated successfully!"
 msgstr ""
 
-#: .\post\views.py:111 .\templates\post\detail.html:24
-#: .\templates\post\partials\post-list-item.html:18
+#: post/views.py:111 templates/post/detail.html:24
+#: templates/post/partials/post-list-item.html:18
 msgid "Update"
 msgstr ""
 
-#: .\service\apps.py:7
+#: service/apps.py:7
 msgid "Service Management"
 msgstr ""
 
-#: .\service\models.py:12
+#: service/models.py:12
 msgid "Service Name"
 msgstr ""
 
-#: .\service\models.py:14
+#: service/models.py:14
 msgid "Short Description"
 msgstr ""
 
-#: .\service\models.py:16
+#: service/models.py:16
 msgid "Service Content"
 msgstr ""
 
-#: .\service\models.py:17
+#: service/models.py:17
 msgid "Service Picture"
 msgstr ""
 
-#: .\service\models.py:22
+#: service/models.py:22
 msgid "Service"
 msgstr ""
 
-#: .\service\models.py:23 .\service\views.py:10
-#: .\templates\layout\partials\header.html:19
+#: service/models.py:23 service/views.py:10
+#: templates/layout/partials/header.html:19
 msgid "Services"
 msgstr ""
 
-#: .\setting\apps.py:7
+#: setting/apps.py:7
 msgid "Setting Management"
 msgstr ""
 
-#: .\setting\models.py:7 .\setting\models.py:19
+#: setting/models.py:7 setting/models.py:19
 msgid "Parameter"
 msgstr ""
 
-#: .\setting\models.py:8
+#: setting/models.py:8
 msgid "Parameter Description"
 msgstr ""
 
-#: .\setting\models.py:9
+#: setting/models.py:9
 msgid "Parameter Value"
 msgstr ""
 
-#: .\setting\models.py:10
+#: setting/models.py:10
 msgid "Last Updated Date"
 msgstr ""
 
-#: .\setting\models.py:20
+#: setting/models.py:20
 msgid "Parameters"
 msgstr ""
 
-#: .\templates\contact\index.html:14
+#: templates/account/login.html:10 templates/account/login.html:15
+#: templates/homepage.html:18 templates/layout/partials/header.html:50
+msgid "Login"
+msgstr ""
+
+#: templates/contact/index.html:14
 msgid "Contact Form"
 msgstr ""
 
-#: .\templates\contact\index.html:19 .\templates\layout\partials\footer.html:29
-#: .\templates\post\partials\comment-form.html:9
+#: templates/contact/index.html:19 templates/layout/partials/footer.html:29
+#: templates/post/partials/comment-form.html:9
 msgid "Submit"
 msgstr ""
 
-#: .\templates\contact\index.html:37
+#: templates/contact/index.html:29
+msgid "Phone Number"
+msgstr ""
+
+#: templates/contact/index.html:37
 msgid "Social Media"
 msgstr ""
 
-#: .\templates\homepage.html:8
+#: templates/homepage.html:8
 msgid "Hello"
 msgstr ""
 
-#: .\templates\homepage.html:17
+#: templates/homepage.html:17
 msgid "homepage_message"
 msgstr "Hello there, what do you want?"
 
-#: .\templates\homepage.html:18
+#: templates/homepage.html:18
 msgid "or"
 msgstr ""
 
-#: .\templates\layout\partials\footer.html:12
+#: templates/layout/partials/footer.html:12
 msgid "This site is powered by:"
 msgstr ""
 
-#: .\templates\layout\partials\header.html:26
-#: .\templates\layout\partials\header.html:31
+#: templates/layout/partials/header.html:26
+#: templates/layout/partials/header.html:31
 msgid "Blog"
 msgstr ""
 
-#: .\templates\layout\partials\header.html:46
+#: templates/layout/partials/header.html:46
 msgid "Account"
 msgstr ""
 
-#: .\templates\layout\partials\header.html:55
+#: templates/layout/partials/header.html:55
 msgid "Admin Panel"
 msgstr ""
 
-#: .\templates\layout\partials\header.html:58
+#: templates/layout/partials/header.html:58
 msgid "Logout"
 msgstr ""
 
-#: .\templates\layout\post.html:19
+#: templates/layout/post.html:19
 msgid "Search Placeholder"
 msgstr "Search article, category, author"
 
-#: .\templates\layout\post.html:21
+#: templates/layout/post.html:21
 msgid "Search"
 msgstr ""
 
-#: .\templates\portfolio\index.html:13
+#: templates/portfolio/index.html:13
 msgid "All"
 msgstr ""
 
-#: .\templates\post\category.html:20 .\templates\post\index.html:16
+#: templates/post/category.html:20 templates/post/index.html:16
 msgid "There is no blog post."
 msgstr ""
 
-#: .\templates\post\detail.html:17
-#: .\templates\post\partials\comment-list.html:10
-#: .\templates\post\partials\post-list-item.html:10
+#: templates/post/detail.html:17 templates/post/partials/comment-list.html:10
+#: templates/post/partials/post-list-item.html:10
 msgid "ago"
 msgstr ""
 
-#: .\templates\post\detail.html:26
-#: .\templates\post\partials\post-list-item.html:20
+#: templates/post/detail.html:26 templates/post/partials/post-list-item.html:20
 msgid "Are you sure you want to delete this post?"
 msgstr ""
 
-#: .\templates\post\detail.html:26
-#: .\templates\post\partials\post-list-item.html:20
+#: templates/post/detail.html:26 templates/post/partials/post-list-item.html:20
 msgid "Delete"
 msgstr ""
 
-#: .\templates\post\form.html:16
+#: templates/post/form.html:16
 msgid "Save"
 msgstr ""
 
-#: .\templates\post\partials\comment-form.html:4
+#: templates/post/partials/comment-form.html:4
 msgid "Create comment"
 msgstr ""
 
-#: .\templates\post\partials\pagination.html:7
+#: templates/post/partials/pagination.html:7
 msgid "First"
 msgstr ""
 
-#: .\templates\post\partials\pagination.html:12
+#: templates/post/partials/pagination.html:12
 msgid "Previous"
 msgstr ""
 
-#: .\templates\post\partials\pagination.html:25
+#: templates/post/partials/pagination.html:25
 msgid "Next"
 msgstr ""
 
-#: .\templates\post\partials\pagination.html:30
+#: templates/post/partials/pagination.html:30
 msgid "Last"
 msgstr ""
 
-#: .\templates\post\partials\post-list-item.html:15
+#: templates/post/partials/post-list-item.html:15
 msgid "Detail"
 msgstr ""
+
+#~ msgid "Successful login"
+#~ msgstr "You have logged successfully."

@@ -40,7 +40,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    url(r'^$', home_view, name='home'),
+    path('', home_view, name='home'),
     path(_('about/'), include('about.urls')),
     path(_('contact/'), include('contact.urls')),
     path(_('blog/'), include('post.urls')),

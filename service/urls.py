@@ -1,9 +1,10 @@
-from django.conf.urls import url
+from django.urls import path
+
 from .views import *
 
 app_name = 'service'
 
 urlpatterns = [
-    url(r'^$', service_index, name='index'),
-    url('^(?P<slug>[\w-]+)/$', service_detail, name='detail'),
+    path('', service_index, name='index'),
+    path('<slug>/', service_detail, name='detail'),
 ]
