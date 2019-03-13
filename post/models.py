@@ -18,9 +18,9 @@ class Post(models.Model):
     )
     user = models.ForeignKey('auth.User', models.CASCADE, 'posts', verbose_name=_('Author'))
     title = models.CharField(_('Post Title'), max_length=155)
+    slug = models.SlugField(_('Slug'), unique=True, null=True, blank=True)
     content = RichTextField(_('Post Content'))
     image = models.ImageField(_('Post Picture'), null=True, blank=True)
-    slug = models.SlugField(_('Slug'), unique=True, null=True, blank=True, editable=False)
     published_at = models.DateTimeField(_('Publishing Date'), auto_now_add=True)
 
     @property
@@ -54,13 +54,16 @@ class Post(models.Model):
         return self.comments.filter(is_confirmed=True)
 
     def get_unique_slug(self):
-        slug = slugify(self.title.replace('ı', 'i'))
-        unique_slug = slug
-        counter = 1
-        while Post.objects.filter(slug=unique_slug).exists():
-            unique_slug = "{}-{}".format(unique_slug, counter)
-            counter += 1
-        return unique_slug
+        if not self.slug:
+            slug = slugify(self.title.replace('ı', 'i'))
+            unique_slug = slug
+            counter = 1
+            while Post.objects.filter(slug=unique_slug).exclude(pk=self.pk).exists():
+                unique_slug = "{}-{}".format(unique_slug, counter)
+                counter += 1
+            return unique_slug
+        else:
+            return self.slug
 
 
 class Comment(models.Model):

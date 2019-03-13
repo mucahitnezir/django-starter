@@ -8,4 +8,5 @@ class CategoryAdmin(ExportActionModelAdmin):
     list_display = ('id', 'name', 'slug', 'type', 'published_at')
     list_editable = ('name', 'type')
     list_filter = ('published_at', 'type')
+    prepopulated_fields = {'slug': ('name',)}
     search_fields = ('name', 'slug')

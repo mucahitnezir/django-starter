@@ -8,4 +8,5 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'slug', 'category', 'published_at')
     list_editable = ('title', 'category')
     list_filter = ('published_at', 'category')
+    prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'slug', 'short_description', 'meta_description', 'content')

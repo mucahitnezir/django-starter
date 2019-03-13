@@ -15,7 +15,7 @@ CATEGORY_TYPES = (
 
 class Category(models.Model):
     name = models.CharField(_('Category Name'), max_length=120)
-    slug = models.SlugField(_('Slug'), unique=True, editable=False)
+    slug = models.SlugField(_('Slug'), unique=True, blank=True)
     type = models.CharField(_('Category Type'), max_length=9, choices=CATEGORY_TYPES, default='post')
     description = RichTextField(_('Category Description'), null=True, blank=True)
     meta_description = models.TextField(_('Meta Description'), null=True, blank=True)
@@ -41,10 +41,13 @@ class Category(models.Model):
         return self.posts.count()
 
     def get_unique_slug(self):
-        slug = slugify(self.name.replace('ı', 'i'))
-        unique_slug = slug
-        counter = 1
-        while Category.objects.filter(slug=unique_slug).exclude(pk=self.pk).exists():
-            unique_slug = "{}-{}".format(unique_slug, counter)
-            counter += 1
-        return unique_slug
+        if not self.slug:
+            slug = slugify(self.name.replace('ı', 'i'))
+            unique_slug = slug
+            counter = 1
+            while Category.objects.filter(slug=unique_slug).exclude(pk=self.pk).exists():
+                unique_slug = "{}-{}".format(unique_slug, counter)
+                counter += 1
+            return unique_slug
+        else:
+            return self.slug

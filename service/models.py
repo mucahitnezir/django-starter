@@ -15,7 +15,7 @@ class Service(models.Model):
         limit_choices_to={'type': 'service'}
     )
     title = models.CharField(_('Service Name'), max_length=160)
-    slug = models.SlugField(_('Slug'), unique=True, editable=False)
+    slug = models.SlugField(_('Slug'), unique=True, blank=True)
     short_description = models.TextField(_('Short Description'))
     meta_description = models.TextField(_('Meta Description'))
     content = RichTextField(_('Service Content'))
@@ -39,10 +39,13 @@ class Service(models.Model):
         return reverse('service:detail', kwargs={'slug': self.slug})
 
     def get_unique_slug(self):
-        slug = slugify(self.title.replace('ı', 'i'))
-        unique_slug = slug
-        counter = 1
-        while Service.objects.filter(slug=unique_slug).exists():
-            unique_slug = "{}-{}".format(unique_slug, counter)
-            counter += 1
-        return unique_slug
+        if not self.slug:
+            slug = slugify(self.title.replace('ı', 'i'))
+            unique_slug = slug
+            counter = 1
+            while Service.objects.filter(slug=unique_slug).exclude(pk=self.slug).exists():
+                unique_slug = "{}-{}".format(unique_slug, counter)
+                counter += 1
+            return unique_slug
+        else:
+            return self.slug

@@ -10,6 +10,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display_links = ('id',)
     list_editable = ('title', 'category')
     list_filter = ('published_at', 'category')
+    prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'content')
 
     def get_user(self, obj):
