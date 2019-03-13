@@ -42,16 +42,16 @@
     <!-- End Google Tag Manager (noscript) -->
 {% endif %}
 
-{% include 'layout/partials/header.html' %}
+{% include 'layout/includes/header.html' %}
 
-{% include 'layout/partials/messages.html' %}
+{% include 'layout/includes/messages.html' %}
 
 <div class="container mb-4" id="main-container">
     {% block content %}
     {% endblock %}
 </div>
 
-{% include 'layout/partials/footer.html' %}
+{% include 'layout/includes/footer.html' %}
 
 <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
 <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>

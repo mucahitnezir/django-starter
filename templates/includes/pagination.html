@@ -1,0 +1,39 @@
+{% load i18n %}
+
+{% if is_paginated %}
+    {% with q=request.GET.q %}
+        <nav>
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a href="?page=1{% if q %}&q={{ q }}{% endif %}" class="page-link">
+                            {% trans "First" %}
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="?page={{ page_obj.previous_page_number }}{% if q %}&q={{ q }}{% endif %}"
+                           class="page-link">{% trans "Previous" %}</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <span class="page-link">
+                        {{ page_obj.number }} / {{ paginator.num_pages }}
+                        <span class="sr-only">(current)</span>
+                    </span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{ page_obj.next_page_number }}{% if q %}&q={{ q }}{% endif %}"
+                           class="page-link">{% trans "Next" %}</a>
+                    </li>
+                    <li class="page-item">
+                        <a href="?page={{ paginator.num_pages }}{% if q %}&q={{ q }}{% endif %}"
+                           class="page-link">{% trans "Last" %}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endwith %}
+{% endif %}

@@ -5,7 +5,7 @@
 {% block content %}
 
     <!--Title-->
-    {% include 'partials/title-default.html' %}
+    {% include 'includes/title-default.html' %}
 
     <!--Categories-->
     <div class="d-flex justify-content-center mb-4">
@@ -20,7 +20,7 @@
 
     <!-- Portfolio items -->
     <div class="row" id="portfolio-list">
-        {% for portfolio in portfolios %}
+        {% for portfolio in page_obj %}
             <div class="col-md-4 col-sm-6 portfolio-list-item mb-3 {{ portfolio.category.slug }}">
                 {% include 'portfolio/partials/portfolio-list-item.html' %}
             </div>

@@ -7,20 +7,25 @@ from ckeditor.fields import RichTextField
 
 
 class Portfolio(models.Model):
-    category = models.ForeignKey('category.Category', on_delete=models.CASCADE, related_name='portfolios',
-                                 verbose_name=_('Portfolio Category'), limit_choices_to={'type': 'portfolio'})
-    title = models.CharField(max_length=120, verbose_name=_('Portfolio Title'))
-    slug = models.SlugField(unique=True, verbose_name=_('Slug'), editable=False)
-    short_description = models.TextField(verbose_name=_('Meta Description'))
-    content = RichTextField(verbose_name=_('Portfolio Description'))
-    image = models.ImageField(null=True, blank=True, verbose_name=_('Portfolio Image'))
-    published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True)
+    category = models.ForeignKey(
+        to='category.Category',
+        on_delete=models.CASCADE,
+        related_name='portfolios',
+        verbose_name=_('Portfolio Category'),
+        limit_choices_to={'type': 'portfolio'}
+    )
+    title = models.CharField(_('Portfolio Title'), max_length=120)
+    slug = models.SlugField(_('Slug'), unique=True, editable=False)
+    short_description = models.TextField(_('Meta Description'))
+    content = RichTextField(_('Portfolio Description'))
+    image = models.ImageField(_('Portfolio Image'), null=True, blank=True)
+    published_at = models.DateTimeField(_('Publishing Date'), auto_now_add=True)
 
     class Meta:
-        ordering = ['-published_at']
+        db_table = 'portfolios'
+        ordering = ('-published_at',)
         verbose_name = _('Portfolio')
         verbose_name_plural = _('Portfolios')
-        db_table = 'portfolios'
 
     def __str__(self):
         return self.title

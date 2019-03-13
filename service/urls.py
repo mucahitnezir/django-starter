@@ -1,10 +1,10 @@
 from django.urls import path
 
-from .views import *
+from .views import ServiceListView, ServiceDetailView
 
 app_name = 'service'
 
-urlpatterns = [
-    path('', service_index, name='index'),
-    path('<slug>/', service_detail, name='detail'),
-]
+urlpatterns = (
+    path('', ServiceListView.as_view(), name='index'),
+    path('<slug>/', ServiceDetailView.as_view(), name='detail'),
+)

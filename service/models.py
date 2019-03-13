@@ -7,21 +7,26 @@ from ckeditor.fields import RichTextField
 
 
 class Service(models.Model):
-    category = models.ForeignKey('category.Category', on_delete=models.CASCADE, related_name='services',
-                                 verbose_name=_('Service Category'), limit_choices_to={'type': 'service'})
-    title = models.CharField(max_length=160, verbose_name=_('Service Name'))
-    slug = models.SlugField(unique=True, verbose_name=_('Slug'), editable=False)
-    short_description = models.TextField(verbose_name=_('Short Description'))
-    meta_description = models.TextField(verbose_name=_('Meta Description'))
-    content = RichTextField(verbose_name=_('Service Content'))
-    image = models.ImageField(verbose_name=_('Service Picture'))
-    published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True)
+    category = models.ForeignKey(
+        to='category.Category',
+        on_delete=models.CASCADE,
+        related_name='services',
+        verbose_name=_('Service Category'),
+        limit_choices_to={'type': 'service'}
+    )
+    title = models.CharField(_('Service Name'), max_length=160)
+    slug = models.SlugField(_('Slug'), unique=True, editable=False)
+    short_description = models.TextField(_('Short Description'))
+    meta_description = models.TextField(_('Meta Description'))
+    content = RichTextField(_('Service Content'))
+    image = models.ImageField(_('Service Picture'))
+    published_at = models.DateTimeField(_('Publishing Date'), auto_now_add=True)
 
     class Meta:
-        ordering = ['title']
+        db_table = 'services'
+        ordering = ('title',)
         verbose_name = _('Service')
         verbose_name_plural = _('Services')
-        db_table = 'services'
 
     def __str__(self):
         return self.title

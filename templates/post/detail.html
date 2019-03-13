@@ -5,7 +5,7 @@
 {% block beforeGrid %}
     {% if post.image %}
         <div class="mb-4">
-            <img class="card-img-top" src="{{ post.image.url }}">
+            <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
         </div>
     {% endif %}
 {% endblock %}
@@ -19,15 +19,11 @@
             </h5>
             <p class="card-text">{{ post.content|safe }}</p>
         </div>
-        {% if request.user.is_authenticated %}
-            <div class="card-footer">
-                <a href="{{ post.get_update_url }}" class="btn btn-success">{% trans "Update" %}</a>
-                <a href="{{ post.get_delete_url }}" class="btn btn-danger"
-                   onclick="return confirm('{% trans "Are you sure you want to delete this post?" %}')">{% trans "Delete" %}</a>
-            </div>
-        {% endif %}
+        <div class="card-footer">
+            {% include 'post/includes/post-actions.html' %}
+        </div>
     </div>
 
-    {% include 'post/partials/comment-list.html' %}
-    {% include 'post/partials/comment-form.html' %}
+    {% include 'post/includes/comment-list.html' %}
+    {% include 'post/includes/comment-form.html' %}
 {% endblock %}

@@ -3,13 +3,13 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class TeamMember(models.Model):
-    first_name = models.CharField(verbose_name=_('First Name'), max_length=100)
-    last_name = models.CharField(verbose_name=_('Last Name'), max_length=100)
-    title = models.CharField(verbose_name=_('Degree'), max_length=100)
-    email_address = models.EmailField(verbose_name=_('Email Address'))
-    linkedin_url = models.URLField(verbose_name=_('Linkedin Address'), null=True, blank=True)
-    image = models.ImageField(verbose_name=_('Profile Photo'), null=True, blank=True)
-    published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True, editable=False)
+    first_name = models.CharField(_('First Name'), max_length=100)
+    last_name = models.CharField(_('Last Name'), max_length=100)
+    title = models.CharField(_('Degree'), max_length=100)
+    email_address = models.EmailField(_('Email Address'))
+    linkedin_url = models.URLField(_('Linkedin Address'), null=True, blank=True)
+    image = models.ImageField(_('Profile Photo'), null=True, blank=True)
+    published_at = models.DateTimeField(_('Publishing Date'), auto_now_add=True, editable=False)
 
     def get_full_name(self):
         return "{} {}".format(self.first_name, self.last_name)
@@ -18,6 +18,7 @@ class TeamMember(models.Model):
 
     class Meta:
         db_table = 'team_members'
+        ordering = ('id',)
         verbose_name = _('Team Member')
         verbose_name_plural = _('Team Members')
 

@@ -3,7 +3,7 @@
 {% block content %}
 
     <!--Title-->
-    {% include 'partials/title-default.html' %}
+    {% include 'includes/title-default.html' %}
 
     <!--About Us-->
     <div class="card mb-4">
@@ -13,11 +13,11 @@
     </div>
 
     <!--Team Members-->
-    {% if team_members|length > 0 %}
+    {% if page_obj|length > 0 %}
         <div class="row">
-            {% for member in team_members %}
+            {% for member in page_obj %}
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    {% include 'about/partials/team-member-item.html' %}
+                    {% include 'about/includes/team-member-item.html' %}
                 </div>
             {% endfor %}
         </div>

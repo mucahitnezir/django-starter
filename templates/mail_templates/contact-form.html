@@ -1,0 +1,25 @@
+{% autoescape off %}
+    Sayın site yöneticisi,<br>
+    Web sitenizin iletişim formundan yeni bir mesaj geldi. Detaylarına aşağıdaki tablodan ulaşabilirsiniz.
+
+    <br><br>
+
+    <table border="1" width="100%" cellpadding="5">
+        <tr>
+            <th>Ad Soyad</th>
+            <td>{{ message.full_name }}</td>
+        </tr>
+        <tr>
+            <th>E-posta Adresi</th>
+            <td>{{ message.email_address }}</td>
+        </tr>
+        <tr>
+            <th>Konu</th>
+            <td>{{ message.subject }}</td>
+        </tr>
+        <tr>
+            <th>Mesaj</th>
+            <td>{{ message.message }}</td>
+        </tr>
+    </table>
+{% endautoescape %}

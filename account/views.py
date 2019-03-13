@@ -1,8 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
+from django.views.generic import UpdateView
 
 from .forms import RegisterForm, EditProfileForm
 
@@ -28,16 +31,16 @@ def register_view(request):
     return render(request, 'account/register.html', context)
 
 
-@login_required
-def profile_edit_view(request):
-    form = EditProfileForm(request.POST or None, instance=request.user)
-    if form.is_valid():
-        form.save()
-        messages.success(request, _('Successful updating profile'))
+class ProfileEditView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    form_class = EditProfileForm
+    template_name = 'account/edit-profile.html'
+    success_url = reverse_lazy('account:edit-profile')
+    success_message = _('Successful updating profile')
 
-    context = {
-        'title': _('Update Profile'),
-        'form': form
-    }
+    def get_object(self, queryset=None):
+        return self.request.user
 
-    return render(request, 'account/edit-profile.html', context)
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['title'] = _('Update Profile')
+        return data

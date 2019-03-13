@@ -6,7 +6,7 @@
 
     <div id="portfolio-detail">
         <!--Title-->
-        {% include 'partials/title-detail.html' with title=portfolio.title subtitle=portfolio.short_description small_title=portfolio.category.name %}
+        {% include 'includes/title-detail.html' with title=portfolio.title subtitle=portfolio.short_description small_title=portfolio.category.name %}
 
         <!--Gallery and Detail Info-->
         <div class="row mb-4 clearfix">
@@ -22,11 +22,11 @@
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Önceki</span>
+                        <span class="sr-only">{% trans 'Previous' %}</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Sonraki</span>
+                        <span class="sr-only">{% trans 'Next' %}</span>
                     </a>
                 </div>
             </div>

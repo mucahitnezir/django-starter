@@ -5,7 +5,7 @@
 {% block content %}
 
     <div class="contact-map-wrapper mb-4">
-        {{ params.gmap_iframe_code|safe }}
+        {{ params.gmap_code|safe }}
     </div>
 
     <div class="row">
@@ -27,35 +27,42 @@
                     <table class="table table-bordered table-striped mb-0">
                         <tr>
                             <th>{% trans "Phone Number" %}</th>
-                            <td>{{ params.phone_number }}</td>
+                            <td>{{ params.phone }}</td>
                         </tr>
                         <tr>
                             <th>{% trans "Email Address" %}</th>
-                            <td>{{ params.email_address }}</td>
+                            <td>{{ params.email }}</td>
                         </tr>
                         <tr>
                             <th>{% trans "Social Media" %}</th>
                             <td>
                                 <div class="social-wrapper">
-                                    <a class="social facebook" href="{{ params.facebook_url }}">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a class="social twitter" href="{{ params.twitter_url }}">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a class="social instagram" href="{{ params.instagram_url }}">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                    <a class="social linkedin" href="{{ params.linkedin_url }}">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
+                                    {% if params.facebook_url %}
+                                        <a class="social facebook" href="{{ params.facebook_url }}">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    {% endif %}
+                                    {% if params.twitter_url %}
+                                        <a class="social twitter" href="{{ params.twitter_url }}">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    {% endif %}
+                                    {% if params.instagram_url %}
+                                        <a class="social instagram" href="{{ params.instagram_url }}">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    {% endif %}
+                                    {% if params.linkedin_url %}
+                                        <a class="social linkedin" href="{{ params.linkedin_url }}">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
-
         </div>
     </div>
 

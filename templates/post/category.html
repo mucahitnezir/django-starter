@@ -3,19 +3,19 @@
 {% load i18n %}
 
 {% block beforeGrid %}
-    {% include 'partials/title-detail.html' with title=category.name subtitle=category.description %}
+    {% include 'includes/title-detail.html' with title=category.name subtitle=category.description %}
 {% endblock %}
 
 {% block postContent %}
 
-    {% if posts|length > 0 %}
+    {% if page_obj|length > 0 %}
         <div class="cards">
-            {% for post in posts %}
-                {% include 'post/partials/post-list-item.html' %}
+            {% for post in page_obj %}
+                {% include 'post/includes/post-list-item.html' %}
             {% endfor %}
         </div>
 
-        {% include 'post/partials/pagination.html' %}
+        {% include 'includes/pagination.html' %}
     {% else %}
         <div class="bg-secondary p-3 rounded text-white">{% trans "There is no blog post." %}</div>
     {% endif %}

@@ -14,8 +14,10 @@
         </p>
     {% else %}
         <p class="bg-primary text-white p-3 rounded">
-            {% trans "homepage_message" %} <a href="{% url 'account:register' %}" class="alert-link text-light">{% trans "Signup"|lower %}</a>
-            {% trans "or" %} <a href="{% url 'account:login' %}" class="alert-link text-light">{% trans "Login"|lower %}</a>
+            {% trans "homepage_message" %}
+            <a href="{% url 'account:register' %}" class="alert-link text-light">{% trans "Signup"|lower %}</a>
+            {% trans "or" %}
+            <a href="{% url 'account:login' %}" class="alert-link text-light">{% trans "Login"|lower %}</a>
         </p>
     {% endif %}
 {% endblock %}

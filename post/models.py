@@ -9,24 +9,29 @@ from ckeditor.fields import RichTextField
 
 
 class Post(models.Model):
-    category = models.ForeignKey('category.Category', on_delete=models.CASCADE, verbose_name=_('Post Category'),
-                                 related_name='posts', limit_choices_to={'type': 'post'})
-    user = models.ForeignKey('auth.User', verbose_name=_('Author'), on_delete=models.CASCADE, related_name='posts')
-    title = models.CharField(max_length=155, verbose_name=_('Post Title'))
-    content = RichTextField(verbose_name=_('Post Content'))
-    image = models.ImageField(null=True, blank=True, verbose_name=_('Post Picture'))
-    slug = models.SlugField(unique=True, null=True, blank=True, verbose_name=_('Slug'), editable=False)
-    published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True)
+    category = models.ForeignKey(
+        to='category.Category',
+        on_delete=models.CASCADE,
+        related_name='posts',
+        verbose_name=_('Post Category'),
+        limit_choices_to={'type': 'post'}
+    )
+    user = models.ForeignKey('auth.User', models.CASCADE, 'posts', verbose_name=_('Author'))
+    title = models.CharField(_('Post Title'), max_length=155)
+    content = RichTextField(_('Post Content'))
+    image = models.ImageField(_('Post Picture'), null=True, blank=True)
+    slug = models.SlugField(_('Slug'), unique=True, null=True, blank=True, editable=False)
+    published_at = models.DateTimeField(_('Publishing Date'), auto_now_add=True)
 
     @property
     def meta_description(self):
         return truncatechars(strip_tags(self.content), 160)
 
     class Meta:
-        ordering = ['-published_at']
+        db_table = 'posts'
+        ordering = ('-published_at',)
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')
-        db_table = 'posts'
 
     def __str__(self):
         return self.title
@@ -59,18 +64,18 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('post.Post', related_name='comments', on_delete=models.CASCADE, verbose_name=_('Post'))
-    full_name = models.CharField(max_length=120, verbose_name=_('Full Name'))
-    email_address = models.CharField(max_length=60, verbose_name=_('Email Address'))
-    content = models.TextField(verbose_name=_('Comment'))
-    is_confirmed = models.BooleanField(verbose_name=_('Approval Status'), default=False)
-    published_at = models.DateTimeField(verbose_name=_('Publishing Date'), auto_now_add=True)
+    post = models.ForeignKey('post.Post', models.CASCADE, 'comments', verbose_name=_('Post'))
+    full_name = models.CharField(_('Full Name'), max_length=120)
+    email_address = models.CharField(_('Email Address'), max_length=60)
+    content = models.TextField(_('Comment'))
+    is_confirmed = models.BooleanField(_('Approval Status'), default=False)
+    published_at = models.DateTimeField(_('Publishing Date'), auto_now_add=True)
 
     class Meta:
-        ordering = ['-published_at']
+        db_table = 'comments'
+        ordering = ('-published_at',)
         verbose_name = _('Comment')
         verbose_name_plural = _('Comments')
-        db_table = 'comments'
 
     def __str__(self):
         return "{} - {}".format(self.id, self.full_name)

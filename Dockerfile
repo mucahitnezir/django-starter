@@ -8,7 +8,7 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 # Insall gettext for i18n
-RUN apt-get update && apt-get install -y gettext libgettextpo-dev
+RUN apt-get update -y && apt-get install -y gettext libgettextpo-dev
 
 COPY . /app
 

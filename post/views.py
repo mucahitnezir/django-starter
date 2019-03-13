@@ -1,120 +1,107 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
-from django.utils.translation import ugettext as _
+from django.shortcuts import get_object_or_404, redirect
+from django.utils.translation import ugettext_lazy as _
+from django.views.generic import ListView, DetailView
+from django.views.generic.detail import SingleObjectMixin
+from django.views.generic.edit import FormMixin, CreateView, UpdateView
 
 from .models import Post
 from .forms import PostForm, CommentForm
 from category.models import Category
 
 
-def post_index(request):
-    # Get all blog categories
-    categories = Category.objects.filter(type='post')
+class PostListView(ListView):
+    model = Post
+    template_name = 'post/index.html'
+    extra_context = {'title': _('Posts')}
+    paginate_by = 5
+    page_kwarg = 'page'
 
-    # Get posts with pagination
-    post_list = Post.objects.all()
+    def get_queryset(self):
+        posts = Post.objects.all()
+        query = self.request.GET.get('q', None)
+        if query:
+            posts = posts.filter(Q(title__icontains=query) | Q(content__icontains=query)).distinct()
+        return posts
 
-    query = request.GET.get('q')
-    if query:
-        post_list = post_list.filter(Q(title__icontains=query) |
-                                     Q(content__icontains=query) |
-                                     Q(user__first_name__icontains=query) |
-                                     Q(user__last_name__icontains=query) |
-                                     Q(category__name__icontains=query)
-                                     ).distinct()
-
-    paginator = Paginator(post_list, 5)  # Show 5 posts on per page
-
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        posts = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        posts = paginator.page(paginator.num_pages)
-
-    # Page context
-    context = {
-        'title': _('Posts'),
-        'posts': posts,
-        'categories': categories
-    }
-    # Render page
-    return render(request, 'post/index.html', context)
+    def get_context_data(self, *args, **kwargs):
+        data = super().get_context_data(*args, **kwargs)
+        data['categories'] = Category.objects.filter(type='post')
+        return data
 
 
-def post_detail(request, slug):
-    # Get post
-    post = get_object_or_404(Post, slug=slug)
-    # Create comment form
-    form = CommentForm(request.POST or None)
-    # If form is valid, save it
-    if form.is_valid():
-        messages.success(request, _('Comment is created successfully'))
+class PostDetailView(SuccessMessageMixin, FormMixin, DetailView):
+    model = Post
+    template_name = 'post/detail.html'
+    form_class = CommentForm
+    success_message = _('Comment is created successfully!')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Post, slug=self.kwargs['slug'])
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['title'] = self.object.title
+        data['meta_description'] = self.object.meta_description
+        return data
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
+    def post(self, request, *args, **kwargs):
+        # Get object
+        self.object = self.get_object()
+        # Form actions
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
         comment = form.save(commit=False)
-        comment.post = post
+        comment.post = self.object
         comment.save()
-        return HttpResponseRedirect(post.get_absolute_url())
-    # Page context
-    context = {
-        'title': post.title,
-        'meta_description': post.meta_description,
-        'post': post,
-        'form': form
-    }
-    # Render page
-    return render(request, 'post/detail.html', context)
+        return super().form_valid(form)
 
 
-@login_required
-def post_create(request):
-    # Save form or create form instance
-    if request.method == 'POST':
-        # Set post variables to form
-        form = PostForm(request.POST, request.FILES or None)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = request.user
-            post.save()
-            messages.success(request, _('Post created successfully'))
-            return HttpResponseRedirect(post.get_absolute_url())
-    else:
-        form = PostForm()
-    # Page context
-    context = {
-        'title': _('Create Post'),
-        'form': form
-    }
-    # Render page
-    return render(request, 'post/form.html', context)
+class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Post
+    template_name = 'post/form.html'
+    extra_context = {'title': _('Create Post')}
+    form_class = PostForm
+    success_message = _('Post created successfully')
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.user = self.request.user
+        post.save()
+        return super().form_valid(form)
 
 
-@login_required
-def post_update(request, id):
-    # Get post
-    post = get_object_or_404(Post, id=id)
-    # Security control
-    if request.user.is_superuser or post.user == request.user:
-        # Create form and if it is valid, save it
-        form = PostForm(request.POST or None, request.FILES or None, instance=post)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Post updated successfully!'))
-            return HttpResponseRedirect(post.get_absolute_url())
-        # Page context
-        context = {
-            'title': _('Update') + ': ' + post.title,
-            'form': form
-        }
-        # Render page
-        return render(request, 'post/form.html', context)
-    else:
-        return redirect('home')
+class PostUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Post
+    template_name = 'post/form.html'
+    extra_context = {'title': _('Create Post')}
+    form_class = PostForm
+    success_message = _('Post updated successfully!')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Post, pk=self.kwargs['id'])
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['title'] = '{}: {}'.format(_('Update'), self.object.title)
+        return data
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
 
 
 @login_required
@@ -129,20 +116,24 @@ def post_delete(request, id):
         return redirect('post:index')
 
 
-def category_detail(request, slug, id):
-    # Get category
-    category = get_object_or_404(Category, id=id, slug=slug, type='post')
-    # Get all blog categories
-    categories = Category.objects.filter(type='post')
-    # Get all category posts
-    posts = category.posts.all()
-    # Page context
-    context = {
-        'title': category.name,
-        'meta_description': category.meta_description,
-        'category': category,
-        'categories': categories,
-        'posts': posts
-    }
-    # Render page
-    return render(request, 'post/category.html', context)
+class CategoryDetailView(SingleObjectMixin, ListView):
+    model = Post
+    template_name = 'post/category.html'
+    paginate_by = 5
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Category, pk=self.kwargs['id'], slug=self.kwargs['slug'], type='post')
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return Post.objects.filter(category=self.object)
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['title'] = self.object.name
+        data['meta_description'] = self.object.meta_description
+        data['categories'] = Category.objects.all()
+        return data

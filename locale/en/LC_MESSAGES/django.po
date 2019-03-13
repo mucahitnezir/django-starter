@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-26 13:46+0300\n"
+"POT-Creation-Date: 2019-03-07 14:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mücahit Nezir <mucahitnezir@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: about/apps.py:7 about/views.py:11 templates/layout/partials/header.html:16
+#: about/apps.py:7 about/views.py:18 templates/layout/includes/header.html:16
 msgid "About"
 msgstr ""
 
-#: about/models.py:6 contact/models.py:6
+#: about/models.py:6 home/models.py:6
 msgid "First Name"
 msgstr ""
 
-#: about/models.py:7 contact/models.py:7
+#: about/models.py:7 home/models.py:7
 msgid "Last Name"
 msgstr ""
 
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Degree"
 msgstr ""
 
-#: about/models.py:9 contact/models.py:8 post/models.py:64
+#: about/models.py:9 home/models.py:8 post/models.py:64
 #: templates/contact/index.html:33
 msgid "Email Address"
 msgstr ""
@@ -47,9 +47,9 @@ msgstr ""
 msgid "Profile Photo"
 msgstr ""
 
-#: about/models.py:12 category/models.py:22 contact/models.py:11
+#: about/models.py:12 category/models.py:22 home/models.py:11
 #: portfolio/models.py:17 post/models.py:19 post/models.py:67
-#: service/models.py:18 templates/portfolio/detail.html:41
+#: service/models.py:23 templates/portfolio/detail.html:41
 msgid "Publishing Date"
 msgstr ""
 
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Password Repeat"
 msgstr ""
 
-#: account/forms.py:11 account/forms.py:38 contact/forms.py:12 post/forms.py:12
+#: account/forms.py:11 account/forms.py:38 home/forms.py:12 post/forms.py:12
 #: post/forms.py:26
 msgid "Captcha"
 msgstr ""
@@ -103,8 +103,8 @@ msgid "Successful signup"
 msgstr "You have registered successfully."
 
 #: account/views.py:26 templates/account/register.html:10
-#: templates/account/register.html:15 templates/homepage.html:17
-#: templates/layout/partials/header.html:51
+#: templates/account/register.html:15 templates/homepage.html:18
+#: templates/layout/includes/header.html:51
 msgid "Signup"
 msgstr ""
 
@@ -114,31 +114,27 @@ msgstr "You are logged out."
 
 #: account/views.py:39 templates/account/edit-profile.html:10
 #: templates/account/edit-profile.html:15
-#: templates/layout/partials/header.html:53
+#: templates/layout/includes/header.html:54
 msgid "Update Profile"
 msgstr ""
 
-#: baseapp/urls.py:44
+#: baseapp/urls.py:27
 msgid "about/"
 msgstr ""
 
-#: baseapp/urls.py:45
-msgid "contact/"
-msgstr ""
-
-#: baseapp/urls.py:46
+#: baseapp/urls.py:28
 msgid "blog/"
 msgstr ""
 
-#: baseapp/urls.py:47
+#: baseapp/urls.py:29
 msgid "accounts/"
 msgstr ""
 
-#: baseapp/urls.py:48
+#: baseapp/urls.py:30
 msgid "portfolio/"
 msgstr ""
 
-#: baseapp/urls.py:49
+#: baseapp/urls.py:31
 msgid "service/"
 msgstr ""
 
@@ -154,7 +150,7 @@ msgstr ""
 msgid "Portfolio Category"
 msgstr ""
 
-#: category/models.py:12 service/models.py:11
+#: category/models.py:12 service/models.py:14
 msgid "Service Category"
 msgstr ""
 
@@ -163,7 +159,7 @@ msgid "Category Name"
 msgstr ""
 
 #: category/models.py:18 portfolio/models.py:13 post/models.py:18
-#: service/models.py:13
+#: service/models.py:18
 msgid "Slug"
 msgstr ""
 
@@ -175,7 +171,7 @@ msgstr ""
 msgid "Category Description"
 msgstr ""
 
-#: category/models.py:21 portfolio/models.py:14 service/models.py:15
+#: category/models.py:21 portfolio/models.py:14 service/models.py:20
 msgid "Meta Description"
 msgstr ""
 
@@ -187,41 +183,48 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: contact/apps.py:7 contact/views.py:45
-#: templates/layout/partials/header.html:42
-msgid "Contact"
+#: home/apps.py:7
+msgid "Home"
 msgstr ""
 
-#: contact/models.py:9
+#: home/models.py:9
 msgid "Subject"
 msgstr ""
 
-#: contact/models.py:10
+#: home/models.py:10
 msgid "Your Message"
 msgstr ""
 
-#: contact/models.py:21
+#: home/models.py:21
 msgid "Message"
 msgstr ""
 
-#: contact/models.py:22
+#: home/models.py:22
 msgid "Messages"
 msgstr ""
 
-#: contact/views.py:23
+#: home/urls.py:8
+msgid "contact/"
+msgstr ""
+
+#: home/views.py:18 templates/layout/includes/header.html:13
+msgid "Homepage"
+msgstr ""
+
+#: home/views.py:25
 msgid "Message created successfully!"
 msgstr ""
 
-#: contact/views.py:25
+#: home/views.py:31 templates/layout/includes/header.html:42
+msgid "Contact"
+msgstr ""
+
+#: home/views.py:48
 msgid "Email did not send!"
 msgstr ""
 
-#: contact/views.py:27
+#: home/views.py:52
 msgid "Message did not created!"
-msgstr ""
-
-#: home/views.py:7 templates/layout/partials/header.html:13
-msgid "Homepage"
 msgstr ""
 
 #: portfolio/apps.py:7
@@ -240,8 +243,8 @@ msgstr ""
 msgid "Portfolio Image"
 msgstr ""
 
-#: portfolio/models.py:21 portfolio/views.py:10
-#: templates/layout/partials/header.html:22
+#: portfolio/models.py:21 portfolio/views.py:12
+#: templates/layout/includes/header.html:22
 msgid "Portfolio"
 msgstr ""
 
@@ -273,7 +276,7 @@ msgstr ""
 msgid "Post Picture"
 msgstr ""
 
-#: post/models.py:28 post/views.py:43 templates/layout/partials/header.html:34
+#: post/models.py:28 post/views.py:19 templates/layout/includes/header.html:34
 msgid "Posts"
 msgstr ""
 
@@ -289,7 +292,7 @@ msgstr ""
 msgid "Approval Status"
 msgstr ""
 
-#: post/models.py:72 templates/post/partials/comment-list.html:3
+#: post/models.py:72 templates/post/includes/comment-list.html:3
 msgid "Comments"
 msgstr ""
 
@@ -305,24 +308,23 @@ msgstr ""
 msgid "<id>/delete/"
 msgstr ""
 
-#: post/views.py:58
-msgid "Comment is created successfully"
+#: post/views.py:40
+msgid "Comment is created successfully!"
 msgstr ""
 
-#: post/views.py:84
-msgid "Post created successfully"
-msgstr ""
-
-#: post/views.py:90 templates/layout/partials/header.html:36
+#: post/views.py:74 post/views.py:91 templates/layout/includes/header.html:36
 msgid "Create Post"
 msgstr ""
 
-#: post/views.py:107
+#: post/views.py:76
+msgid "Post created successfully"
+msgstr ""
+
+#: post/views.py:93
 msgid "Post updated successfully!"
 msgstr ""
 
-#: post/views.py:111 templates/post/detail.html:24
-#: templates/post/partials/post-list-item.html:18
+#: post/views.py:100 templates/post/includes/post-actions.html:9
 msgid "Update"
 msgstr ""
 
@@ -330,28 +332,28 @@ msgstr ""
 msgid "Service Management"
 msgstr ""
 
-#: service/models.py:12
+#: service/models.py:17
 msgid "Service Name"
 msgstr ""
 
-#: service/models.py:14
+#: service/models.py:19
 msgid "Short Description"
 msgstr ""
 
-#: service/models.py:16
+#: service/models.py:21
 msgid "Service Content"
 msgstr ""
 
-#: service/models.py:17
+#: service/models.py:22
 msgid "Service Picture"
 msgstr ""
 
-#: service/models.py:22
+#: service/models.py:27
 msgid "Service"
 msgstr ""
 
-#: service/models.py:23 service/views.py:10
-#: templates/layout/partials/header.html:19
+#: service/models.py:28 service/views.py:12
+#: templates/layout/includes/header.html:19
 msgid "Services"
 msgstr ""
 
@@ -380,7 +382,7 @@ msgid "Parameters"
 msgstr ""
 
 #: templates/account/login.html:10 templates/account/login.html:15
-#: templates/homepage.html:18 templates/layout/partials/header.html:50
+#: templates/homepage.html:20 templates/layout/includes/header.html:50
 msgid "Login"
 msgstr ""
 
@@ -388,8 +390,8 @@ msgstr ""
 msgid "Contact Form"
 msgstr ""
 
-#: templates/contact/index.html:19 templates/layout/partials/footer.html:29
-#: templates/post/partials/comment-form.html:9
+#: templates/contact/index.html:19 templates/layout/includes/footer.html:29
+#: templates/post/includes/comment-form.html:9
 msgid "Submit"
 msgstr ""
 
@@ -409,32 +411,44 @@ msgstr ""
 msgid "homepage_message"
 msgstr "Hello there, what do you want?"
 
-#: templates/homepage.html:18
+#: templates/homepage.html:19
 msgid "or"
 msgstr ""
 
-#: templates/layout/partials/footer.html:12
-msgid "This site is powered by:"
+#: templates/includes/pagination.html:10
+msgid "First"
 msgstr ""
 
-#: templates/layout/partials/header.html:26
-#: templates/layout/partials/header.html:31
+#: templates/includes/pagination.html:15 templates/portfolio/detail.html:25
+msgid "Previous"
+msgstr ""
+
+#: templates/includes/pagination.html:29 templates/portfolio/detail.html:29
+msgid "Next"
+msgstr ""
+
+#: templates/includes/pagination.html:33
+msgid "Last"
+msgstr ""
+
+#: templates/layout/includes/header.html:26
+#: templates/layout/includes/header.html:31
 msgid "Blog"
 msgstr ""
 
-#: templates/layout/partials/header.html:46
+#: templates/layout/includes/header.html:46
 msgid "Account"
 msgstr ""
 
-#: templates/layout/partials/header.html:55
+#: templates/layout/includes/header.html:58
 msgid "Admin Panel"
 msgstr ""
 
-#: templates/layout/partials/header.html:58
+#: templates/layout/includes/header.html:62
 msgid "Logout"
 msgstr ""
 
-#: templates/layout/post.html:19
+#: templates/layout/post.html:20
 msgid "Search Placeholder"
 msgstr "Search article, category, author"
 
@@ -450,45 +464,33 @@ msgstr ""
 msgid "There is no blog post."
 msgstr ""
 
-#: templates/post/detail.html:17 templates/post/partials/comment-list.html:10
-#: templates/post/partials/post-list-item.html:10
+#: templates/post/detail.html:17 templates/post/includes/comment-list.html:10
+#: templates/post/includes/post-list-item.html:10
 msgid "ago"
-msgstr ""
-
-#: templates/post/detail.html:26 templates/post/partials/post-list-item.html:20
-msgid "Are you sure you want to delete this post?"
-msgstr ""
-
-#: templates/post/detail.html:26 templates/post/partials/post-list-item.html:20
-msgid "Delete"
 msgstr ""
 
 #: templates/post/form.html:16
 msgid "Save"
 msgstr ""
 
-#: templates/post/partials/comment-form.html:4
+#: templates/post/includes/comment-form.html:4
 msgid "Create comment"
 msgstr ""
 
-#: templates/post/partials/pagination.html:7
-msgid "First"
+#: templates/post/includes/comment-list.html:13
+msgid "There is no comment related this post!"
 msgstr ""
 
-#: templates/post/partials/pagination.html:12
-msgid "Previous"
-msgstr ""
-
-#: templates/post/partials/pagination.html:25
-msgid "Next"
-msgstr ""
-
-#: templates/post/partials/pagination.html:30
-msgid "Last"
-msgstr ""
-
-#: templates/post/partials/post-list-item.html:15
+#: templates/post/includes/post-actions.html:4
 msgid "Detail"
+msgstr ""
+
+#: templates/post/includes/post-actions.html:11
+msgid "Are you sure you want to delete this post?"
+msgstr ""
+
+#: templates/post/includes/post-actions.html:11
+msgid "Delete"
 msgstr ""
 
 #~ msgid "Successful login"

@@ -1,0 +1,13 @@
+{% load i18n %}
+
+{% if detail %}
+    <a href="{{ post.get_absolute_url }}" class="btn btn-primary">{% trans "Detail" %}</a>
+{% endif %}
+
+{% if request.user.is_authenticated %}
+    {% if request.user.is_superuser or post.user == request.user %}
+        <a href="{{ post.get_update_url }}" class="btn btn-success">{% trans "Update" %}</a>
+        <a href="{{ post.get_delete_url }}" class="btn btn-danger"
+           onclick="return confirm('{% trans "Are you sure you want to delete this post?" %}')">{% trans "Delete" %}</a>
+    {% endif %}
+{% endif %}

@@ -13,13 +13,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = [
-            # 'user',
-            'title',
-            'category',
-            'content',
-            'image',
-        ]
+        fields = ('title', 'category', 'content', 'image')
 
 
 class CommentForm(forms.ModelForm):
@@ -44,8 +38,4 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = [
-            'full_name',
-            'email_address',
-            'content',
-        ]
+        fields = ('full_name', 'email_address', 'content')

@@ -12,7 +12,7 @@ class ContactForm(forms.ModelForm):
     captcha = ReCaptchaField(label=_('Captcha'))
 
     def __init__(self, *args, **kwargs):
-        super(ContactForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_tag = False
         self.helper.layout = Layout(
@@ -36,10 +36,4 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Message
-        fields = [
-            'first_name',
-            'last_name',
-            'email_address',
-            'subject',
-            'message',
-        ]
+        fields = ('first_name', 'last_name', 'email_address', 'subject', 'message')

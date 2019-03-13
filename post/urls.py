@@ -1,15 +1,15 @@
 from django.urls import path
 from django.utils.translation import ugettext_lazy as _
 
-from .views import *
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, CategoryDetailView, post_delete
 
 app_name = 'post'
 
-urlpatterns = [
-    path('', post_index, name='index'),
-    path(_('create/'), post_create, name='create'),
-    path('<slug>/', post_detail, name='detail'),
-    path(_('<id>/update/'), post_update, name='update'),
+urlpatterns = (
+    path('', PostListView.as_view(), name='index'),
+    path(_('create/'), PostCreateView.as_view(), name='create'),
+    path('<slug>/', PostDetailView.as_view(), name='detail'),
+    path(_('<id>/update/'), PostUpdateView.as_view(), name='update'),
     path(_('<id>/delete/'), post_delete, name='delete'),
-    path('c/<slug>-<id>/', category_detail, name='category')
-]
+    path('c/<slug>-<id>/', CategoryDetailView.as_view(), name='category')
+)

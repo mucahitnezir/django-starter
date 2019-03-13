@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /i18n
 Disallow: /admin
 
-Sitemap: https://mucahitnezir.pythonanywhere.com/sitemap.xml
+Sitemap: http://django-starter.mucahitnezir.com/sitemap.xml

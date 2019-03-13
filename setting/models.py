@@ -4,18 +4,18 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Setting(models.Model):
-    key = models.CharField(max_length=32, unique=True, verbose_name=_('Parameter'), editable=False)
-    description = models.CharField(max_length=255, verbose_name=_('Parameter Description'), null=True, blank=True)
-    value = models.TextField(verbose_name=_('Parameter Value'), null=True, blank=True)
-    updated_at = models.DateTimeField(verbose_name=_('Last Updated Date'), auto_now=True, null=True, blank=True)
+    key = models.CharField(_('Parameter'), max_length=32, unique=True, editable=False)
+    description = models.CharField(_('Parameter Description'), max_length=255, null=True, blank=True)
+    value = models.TextField(_('Parameter Value'), null=True, blank=True)
+    updated_at = models.DateTimeField(_('Last Updated Date'), auto_now=True, null=True, blank=True)
 
     @property
     def admin_list_value(self):
         return truncatechars(self.value, 100)
 
     class Meta:
-        ordering = ['key']
         db_table = 'settings'
+        ordering = ('key',)
         verbose_name = _('Parameter')
         verbose_name_plural = _('Parameters')
 

@@ -3,10 +3,10 @@
 {% block content %}
 
     <!--Title-->
-    {% include 'partials/title-default.html' %}
+    {% include 'includes/title-default.html' %}
 
     <div id="service-list">
-        {% for category in categories %}
+        {% for category in page_obj %}
             <div class="mb-5">
                 <!--Category Title-->
                 <h2 class="h3 text-center mb-4">{{ category.name }}</h2>
@@ -14,7 +14,7 @@
                 <div class="row">
                     {% for service in category.services.all %}
                         <div class="col-md-3 col-sm-6">
-                            {% include 'service/partials/service-list-item.html' %}
+                            {% include 'service/includes/service-list-item.html' %}
                         </div>
                     {% endfor %}
                 </div>

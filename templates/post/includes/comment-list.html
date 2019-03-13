@@ -1,14 +1,15 @@
 {% load i18n %}
 
 <h3 class="h3">{% trans "Comments" %}</h3>
+
 <div class="mb-4">
     {% for comment in post.get_confirmed_comments %}
-
         <div class="card mb-2">
             <div class="card-header">{{ comment.full_name }}</div>
             <div class="card-body">{{ comment.content|linebreaks }}</div>
             <div class="card-footer">{{ comment.published_at|timesince }} {% trans "ago" %}</div>
         </div>
-
+    {% empty %}
+        <div class="alert alert-warning">{% trans 'There is no comment related this post!' %}</div>
     {% endfor %}
 </div>
