@@ -1,14 +1,24 @@
-# Django Blog
-Hello, this is basic django web application template to build new web sites. This application is powered by @mucahitnezir.
+# Django Starter
+Hello, this is basic django web application. This application is powered by @mucahitnezir.
 
-## Demo
-Demo application is hosted in PythonAnywhere. You can reach it from [this link](https://mucahitnezir.pythonanywhere.com).
+## 1. Demo
+Demo application is hosted in AWS ElasticBeanstalk. You can reach it from [this link](http://django-starter.mucahitnezir.com).
 
-## Database Selection
+## 2. Database Selection
 This project uses **PostgreSQL** database.
 
-## Installation
+## 3. Installation
 Perform the following steps after downloading the project.
+
+### 3.1. Installation with Docker Compose
+1. Create and modify `.env` file by copying `.env.sample` file in root directory.
+2. After, you have to build docker containers with `docker-compose build` command.
+3. Run `docker-compose run web python manage.py migrate` command to migrate database.
+3. Run `docker-compose run web python manage.py loaddata setting/fixtures/parameter.json` command to load initial database rows.
+4. Run `docker-compose run web python manage.py createsuperuser` command to create admin user.
+5. Run `docker-compose up` command to run server.
+
+### 3.2. Manuel Installation
 
 1. Install virtualenv (If it is not installed)  
 `pip install virtualenv`
@@ -19,20 +29,19 @@ Perform the following steps after downloading the project.
 **Windows:** `venv\Scripts\activate`
 4. Install required packages  
 `pip install -r requirements.txt`
-5. Create `.env` file by copying `.env.sample` file in root directory.
-6. Modify **.env** file.
-7. Create migration files  
-`python manage.py makemigrations`
-8. Migrate db from migration files  
+5. Create and modify `.env` file by copying `.env.sample` file in root directory.
+6. Migrate db from migration files  
 `python manage.py migrate`
-9. Create super user  
+7. Load initial database rows  
+`python manage.py loaddata setting/fixtures/parameter.json`
+8. Create super user  
 `python manage.py createsuperuser`
-10. Install npm packages.  
+9. Install npm packages.  
 `npm install`
-11. Collect static files (Only required in production)  
+10. Collect static files (Only required in production)  
 `python manage.py collectstatic`
-12. Compile language files.  
+11. Compile language files.  
 `python manage.py compilemessages -l tr`  
 `python manage.py compilemessages -l en`
-13. Run server  
+12. Run server  
 `python manage.py runserver`
