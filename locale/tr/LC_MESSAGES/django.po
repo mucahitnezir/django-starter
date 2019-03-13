@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-07 14:32+0300\n"
+"POT-Creation-Date: 2019-03-14 01:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mücahit Nezir <mucahitnezir@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr "Soyad"
 msgid "Degree"
 msgstr "Ünvan"
 
-#: about/models.py:9 home/models.py:8 post/models.py:64
+#: about/models.py:9 home/models.py:8 post/models.py:72
 #: templates/contact/index.html:33
 msgid "Email Address"
 msgstr "E-posta Adresi"
@@ -48,16 +48,16 @@ msgid "Profile Photo"
 msgstr "Profil Fotoğrafı"
 
 #: about/models.py:12 category/models.py:22 home/models.py:11
-#: portfolio/models.py:17 post/models.py:19 post/models.py:67
+#: portfolio/models.py:22 post/models.py:24 post/models.py:75
 #: service/models.py:23 templates/portfolio/detail.html:41
 msgid "Publishing Date"
 msgstr "Yayınlanma Tarihi"
 
-#: about/models.py:21
+#: about/models.py:22
 msgid "Team Member"
 msgstr "Ekip Üyesi"
 
-#: about/models.py:22
+#: about/models.py:23
 msgid "Team Members"
 msgstr "Ekip Üyeleri"
 
@@ -69,16 +69,16 @@ msgstr "Şifre"
 msgid "Password Repeat"
 msgstr "Şifre Tekrar"
 
-#: account/forms.py:11 account/forms.py:38 home/forms.py:12 post/forms.py:12
-#: post/forms.py:26
+#: account/forms.py:11 account/forms.py:31 home/forms.py:12 post/forms.py:12
+#: post/forms.py:20
 msgid "Captcha"
 msgstr "Güvenlik Kontrolü"
 
-#: account/forms.py:30
+#: account/forms.py:23
 msgid "Passwords do not match."
 msgstr "Şifreler birbirleri ile eşleşmiyor."
 
-#: account/forms.py:32
+#: account/forms.py:25
 msgid "Missing password field(s)."
 msgstr "Eksik şifre gönderildi."
 
@@ -106,21 +106,21 @@ msgstr "cikis-yap/"
 msgid "edit-profile/"
 msgstr "profil-guncelle/"
 
-#: account/views.py:21
+#: account/views.py:19
 msgid "Successful signup"
 msgstr "Kayıt işlemi başarılı bir şekilde tamamlandı."
 
-#: account/views.py:26 templates/account/register.html:10
+#: account/views.py:20 templates/account/register.html:10
 #: templates/account/register.html:15 templates/homepage.html:18
 #: templates/layout/includes/header.html:51
 msgid "Signup"
 msgstr "Kayıt Ol"
 
-#: account/views.py:36
+#: account/views.py:44
 msgid "Successful updating profile"
 msgstr "Profil bilgileri başarılı bir şekilde güncellendi."
 
-#: account/views.py:39 templates/account/edit-profile.html:10
+#: account/views.py:51 templates/account/edit-profile.html:10
 #: templates/account/edit-profile.html:15
 #: templates/layout/includes/header.html:54
 msgid "Update Profile"
@@ -150,11 +150,11 @@ msgstr "hizmet/"
 msgid "Category Management"
 msgstr "Kategori Yönetimi"
 
-#: category/models.py:10 post/models.py:12
+#: category/models.py:10 post/models.py:16
 msgid "Post Category"
 msgstr "Blog Kategorisi"
 
-#: category/models.py:11 portfolio/models.py:11
+#: category/models.py:11 portfolio/models.py:14
 msgid "Portfolio Category"
 msgstr "Proje Kategorisi"
 
@@ -166,7 +166,7 @@ msgstr "Hizmet Kategorisi"
 msgid "Category Name"
 msgstr "Kategori Adı"
 
-#: category/models.py:18 portfolio/models.py:13 post/models.py:18
+#: category/models.py:18 portfolio/models.py:18 post/models.py:21
 #: service/models.py:18
 msgid "Slug"
 msgstr "Seo Url"
@@ -179,15 +179,15 @@ msgstr "Kategori Tipi"
 msgid "Category Description"
 msgstr "Kategori Açıklaması"
 
-#: category/models.py:21 portfolio/models.py:14 service/models.py:20
+#: category/models.py:21 portfolio/models.py:19 service/models.py:20
 msgid "Meta Description"
 msgstr "Meta Açıklaması"
 
-#: category/models.py:26 templates/portfolio/detail.html:37
+#: category/models.py:27 templates/portfolio/detail.html:37
 msgid "Category"
 msgstr "Kategori"
 
-#: category/models.py:27
+#: category/models.py:28
 msgid "Categories"
 msgstr "Kategoriler"
 
@@ -241,32 +241,32 @@ msgstr "Mesaj oluşturulamadı!!"
 msgid "Portfolio Management"
 msgstr "Portfolyo Yönetimi"
 
-#: portfolio/models.py:12
+#: portfolio/models.py:17
 msgid "Portfolio Title"
 msgstr "Proje Başlığı"
 
-#: portfolio/models.py:15
+#: portfolio/models.py:20
 msgid "Portfolio Description"
 msgstr "Proje Açıklaması"
 
-#: portfolio/models.py:16
+#: portfolio/models.py:21
 msgid "Portfolio Image"
 msgstr "Proje Görseli"
 
-#: portfolio/models.py:21 portfolio/views.py:12
+#: portfolio/models.py:27 portfolio/views.py:12
 #: templates/layout/includes/header.html:22
 msgid "Portfolio"
 msgstr "Portfolyo"
 
-#: portfolio/models.py:22
+#: portfolio/models.py:28
 msgid "Portfolios"
 msgstr "Portfolyo Projeleri"
 
-#: post/admin.py:19 post/models.py:14 templates/post/detail.html:18
+#: post/admin.py:20 post/models.py:19 templates/post/detail.html:18
 msgid "Author"
 msgstr "Yazar"
 
-#: post/admin.py:36 post/models.py:27 post/models.py:62
+#: post/admin.py:34 post/models.py:33 post/models.py:70
 msgid "Post"
 msgstr "Blog Yazısı"
 
@@ -274,35 +274,35 @@ msgstr "Blog Yazısı"
 msgid "Post Management"
 msgstr "Blog Yönetimi"
 
-#: post/models.py:15
+#: post/models.py:20
 msgid "Post Title"
 msgstr "Blog Başlığı"
 
-#: post/models.py:16
+#: post/models.py:22
 msgid "Post Content"
 msgstr "Blog İçeriği"
 
-#: post/models.py:17
+#: post/models.py:23
 msgid "Post Picture"
 msgstr "Blog Görseli"
 
-#: post/models.py:28 post/views.py:19 templates/layout/includes/header.html:34
+#: post/models.py:34 post/views.py:19 templates/layout/includes/header.html:34
 msgid "Posts"
 msgstr "Blog Yazıları"
 
-#: post/models.py:63
+#: post/models.py:71
 msgid "Full Name"
 msgstr "Ad Soyad"
 
-#: post/models.py:65 post/models.py:71
+#: post/models.py:73 post/models.py:80
 msgid "Comment"
 msgstr "Yorum"
 
-#: post/models.py:66
+#: post/models.py:74
 msgid "Approval Status"
 msgstr "Onay Durumu"
 
-#: post/models.py:72 templates/post/includes/comment-list.html:3
+#: post/models.py:81 templates/post/includes/comment-list.html:3
 msgid "Comments"
 msgstr "Yorumlar"
 
@@ -366,11 +366,11 @@ msgstr "Hizmet İçeriği"
 msgid "Service Picture"
 msgstr "Hizmet Görseli"
 
-#: service/models.py:27
+#: service/models.py:28
 msgid "Service"
 msgstr "Hizmet"
 
-#: service/models.py:28 service/views.py:12
+#: service/models.py:29 service/views.py:12
 #: templates/layout/includes/header.html:19
 msgid "Services"
 msgstr "Hizmetler"
@@ -487,7 +487,7 @@ msgstr "Hiç blog yazısı bulunamadı."
 msgid "ago"
 msgstr "önce"
 
-#: templates/post/form.html:16
+#: templates/post/form.html:15
 msgid "Save"
 msgstr "Kaydet"
 
