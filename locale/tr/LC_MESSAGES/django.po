@@ -126,23 +126,23 @@ msgstr "Profil bilgileri başarılı bir şekilde güncellendi."
 msgid "Update Profile"
 msgstr "Profili Güncelle"
 
-#: baseapp/urls.py:27
+#: app/urls.py:27
 msgid "about/"
 msgstr "hakkimizda/"
 
-#: baseapp/urls.py:28
+#: app/urls.py:28
 msgid "blog/"
 msgstr ""
 
-#: baseapp/urls.py:29
+#: app/urls.py:29
 msgid "accounts/"
 msgstr "uyelik/"
 
-#: baseapp/urls.py:30
+#: app/urls.py:30
 msgid "portfolio/"
 msgstr "portfolyo/"
 
-#: baseapp/urls.py:31
+#: app/urls.py:31
 msgid "service/"
 msgstr "hizmet/"
 

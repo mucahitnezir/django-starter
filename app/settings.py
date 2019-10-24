@@ -11,7 +11,7 @@ if os.path.isfile(env_file):
     env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY')
@@ -22,7 +22,7 @@ DEBUG = True
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [])
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'baseapp.urls'
+ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
@@ -89,16 +89,16 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'baseapp.context_processors.parameters',
+                'app.context_processors.parameters',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'baseapp.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 # Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+# https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'en'
 
@@ -138,7 +138,7 @@ LOCALE_PATHS = [
 ]
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/assets/'
 STATICFILES_DIRS = [
@@ -182,7 +182,7 @@ LOGOUT_REDIRECT_URL = 'account:login'
 
 
 # Email
-# https://docs.djangoproject.com/en/2.1/topics/email/#topic-email-backends
+# https://docs.djangoproject.com/en/2.2/topics/email/#topic-email-backends
 
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 SENDGRID_API_KEY = env.str('SENDGRID_API_KEY')

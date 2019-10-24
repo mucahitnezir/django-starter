@@ -118,23 +118,23 @@ msgstr "You are logged out."
 msgid "Update Profile"
 msgstr ""
 
-#: baseapp/urls.py:27
+#: app/urls.py:27
 msgid "about/"
 msgstr ""
 
-#: baseapp/urls.py:28
+#: app/urls.py:28
 msgid "blog/"
 msgstr ""
 
-#: baseapp/urls.py:29
+#: app/urls.py:29
 msgid "accounts/"
 msgstr ""
 
-#: baseapp/urls.py:30
+#: app/urls.py:30
 msgid "portfolio/"
 msgstr ""
 
-#: baseapp/urls.py:31
+#: app/urls.py:31
 msgid "service/"
 msgstr ""
 
