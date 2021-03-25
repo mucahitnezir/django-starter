@@ -17,7 +17,7 @@ Pillow==6.2.1
 psycopg2-binary==2.8.4
 python-http-client==3.2.1
 pytz==2018.5
-PyYAML==5.1.2
+PyYAML==5.4
 sendgrid==6.1.0
 sqlparse==0.3.0
 tablib==0.12.1
