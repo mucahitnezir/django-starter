@@ -2,16 +2,12 @@
 
 {% load i18n %}
 
-{% block beforeGrid %}
-    {% include 'includes/title-detail.html' with title=category.name subtitle=category.description %}
-{% endblock %}
-
 {% block postContent %}
 
     {% if page_obj|length > 0 %}
         <div class="cards">
             {% for post in page_obj %}
-                {% include 'post/includes/post-list-item.html' %}
+                {% include 'blog/includes/post-list-item.html' %}
             {% endfor %}
         </div>
 

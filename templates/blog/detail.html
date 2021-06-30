@@ -20,10 +20,10 @@
             <p class="card-text">{{ post.content|safe }}</p>
         </div>
         <div class="card-footer">
-            {% include 'post/includes/post-actions.html' %}
+            {% include 'blog/includes/post-actions.html' %}
         </div>
     </div>
 
-    {% include 'post/includes/comment-list.html' %}
-    {% include 'post/includes/comment-form.html' %}
+    {% include 'blog/includes/comment-list.html' %}
+    {% include 'blog/includes/comment-form.html' %}
 {% endblock %}

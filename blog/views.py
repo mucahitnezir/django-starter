@@ -15,7 +15,7 @@ from category.models import Category
 
 class PostListView(ListView):
     model = Post
-    template_name = 'post/index.html'
+    template_name = 'blog/index.html'
     extra_context = {'title': _('Posts')}
     paginate_by = 5
     page_kwarg = 'page'
@@ -35,7 +35,7 @@ class PostListView(ListView):
 
 class PostDetailView(SuccessMessageMixin, FormMixin, DetailView):
     model = Post
-    template_name = 'post/detail.html'
+    template_name = 'blog/detail.html'
     form_class = CommentForm
     success_message = _('Comment is created successfully!')
 
@@ -70,7 +70,7 @@ class PostDetailView(SuccessMessageMixin, FormMixin, DetailView):
 
 class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
-    template_name = 'post/form.html'
+    template_name = 'blog/form.html'
     extra_context = {'title': _('Create Post')}
     form_class = PostForm
     success_message = _('Post created successfully')
@@ -87,7 +87,7 @@ class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Post
-    template_name = 'post/form.html'
+    template_name = 'blog/form.html'
     extra_context = {'title': _('Create Post')}
     form_class = PostForm
     success_message = _('Post updated successfully!')
@@ -118,7 +118,7 @@ def post_delete(request, id):
 
 class CategoryDetailView(SingleObjectMixin, ListView):
     model = Post
-    template_name = 'post/category.html'
+    template_name = 'blog/category.html'
     paginate_by = 5
 
     def get_object(self, queryset=None):
