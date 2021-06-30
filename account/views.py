@@ -15,7 +15,7 @@ class RegisterView(SuccessMessageMixin, CreateView):
     model = User
     form_class = RegisterForm
     template_name = 'account/register.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('landing:home')
     success_message = _('Successful signup')
     extra_context = {'title': _('Signup')}
 

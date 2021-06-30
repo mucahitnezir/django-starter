@@ -23,8 +23,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('', include('home.urls')),
-    path(_('about/'), include('about.urls')),
+    path('', include('landing.urls')),
     path(_('blog/'), include('post.urls')),
     path(_('accounts/'), include('account.urls')),
     path(_('portfolio/'), include('portfolio.urls')),

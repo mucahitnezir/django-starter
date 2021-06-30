@@ -52,8 +52,7 @@ INSTALLED_APPS = [
     'portfolio',
     'service',
     'setting',
-    'home',
-    'about',
+    'landing',
     # Third
     'crispy_forms',
     'django_cleanup',
@@ -177,7 +176,7 @@ RECAPTCHA_USE_SSL = not DEBUG
 
 LOGIN_URL = 'account:login'
 LOGOUT_URL = 'account:logout'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'landing:home'
 LOGOUT_REDIRECT_URL = 'account:login'
 
 

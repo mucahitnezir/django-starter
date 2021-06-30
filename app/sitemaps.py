@@ -65,7 +65,7 @@ class StaticViewSitemap(Sitemap):
     i18n = True
 
     def items(self):
-        return ['home', 'contact', 'about:index', 'service:index', 'portfolio:index', 'post:index']
+        return ['landing:home', 'landing:contact', 'landing:about', 'service:index', 'portfolio:index', 'post:index']
 
     def location(self, obj):
         return reverse(obj)

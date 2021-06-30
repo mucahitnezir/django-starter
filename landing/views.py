@@ -7,21 +7,36 @@ from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 
-from home.forms import ContactForm
+from .forms import ContactForm
+from .models import TeamMember
 from setting.models import Setting
 
 
 class HomeView(TemplateView):
-    template_name = 'homepage.html'
+    template_name = 'landing/home.html'
     extra_context = {'title': _('Homepage')}
+
+
+class AboutView(ListView):
+    model = TeamMember
+    template_name = 'landing/about.html'
+
+    def get_queryset(self):
+        return TeamMember.objects.all()
+
+    def get_context_data(self, *args, **kwargs):
+        data = super().get_context_data(*args, **kwargs)
+        data['about_us'] = Setting.get_one('about_page_content')
+        data['title'] = _('About')
+        return data
 
 
 class ContactView(SuccessMessageMixin, FormView):
     form_class = ContactForm
-    template_name = 'contact/index.html'
-    success_url = reverse_lazy('contact')
+    template_name = 'landing/contact.html'
+    success_url = reverse_lazy('landing:contact')
     success_message = _('Message created successfully!')
 
     def get_context_data(self, **kwargs):
@@ -46,7 +61,7 @@ class ContactView(SuccessMessageMixin, FormView):
             return super().form_valid(form)
         else:
             messages.warning(self.request, _('Email did not send!'))
-            return redirect('contact')
+            return redirect('landing:contact')
 
     def form_invalid(self, form):
         messages.warning(self.request, _('Message did not created!'))
