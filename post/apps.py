@@ -4,4 +4,4 @@ from django.utils.translation import ugettext_lazy as _
 
 class PostConfig(AppConfig):
     name = 'post'
-    verbose_name = _('Post Management')
+    verbose_name = _('Post')

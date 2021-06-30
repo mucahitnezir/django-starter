@@ -4,4 +4,4 @@ from django.utils.translation import ugettext_lazy as _
 
 class SettingConfig(AppConfig):
     name = 'setting'
-    verbose_name = _('Setting Management')
+    verbose_name = _('Setting')
