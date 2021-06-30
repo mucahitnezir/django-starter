@@ -42,13 +42,13 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         # return "/post/{}".format(self.id)
-        return reverse('post:detail', kwargs={'slug': self.slug})
+        return reverse('blog:detail', kwargs={'slug': self.slug})
 
     def get_update_url(self):
-        return reverse('post:update', kwargs={'id': self.id})
+        return reverse('blog:update', kwargs={'id': self.id})
 
     def get_delete_url(self):
-        return reverse('post:delete', kwargs={'id': self.id})
+        return reverse('blog:delete', kwargs={'id': self.id})
 
     def get_confirmed_comments(self):
         return self.comments.filter(is_confirmed=True)
@@ -67,7 +67,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('post.Post', models.CASCADE, 'comments', verbose_name=_('Post'))
+    post = models.ForeignKey('blog.Post', models.CASCADE, 'comments', verbose_name=_('Post'))
     full_name = models.CharField(_('Full Name'), max_length=120)
     email_address = models.CharField(_('Email Address'), max_length=60)
     content = models.TextField(_('Comment'))

@@ -15,7 +15,7 @@
         <div class="col-md-4">
             <div class="ps-20">
                 <!--Search Box-->
-                <form class="d-flex mb-3" method="GET" action="{% url 'post:index' %}">
+                <form class="d-flex mb-3" method="GET" action="{% url 'blog:index' %}">
                     <input type="search" name="q" class="form-control flex-grow-1 rounded-0"
                            placeholder="{% trans "Search Placeholder" %}" value="{{ request.GET.q }}">
                     <button class="btn btn-success rounded-0" type="submit">{% trans "Search" %}</button>

@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-from post.models import Post
+from blog.models import Post
 from service.models import Service
 from portfolio.models import Portfolio
 from category.models import Category
@@ -65,7 +65,7 @@ class StaticViewSitemap(Sitemap):
     i18n = True
 
     def items(self):
-        return ['landing:home', 'landing:contact', 'landing:about', 'service:index', 'portfolio:index', 'post:index']
+        return ['landing:home', 'landing:contact', 'landing:about', 'service:index', 'portfolio:index', 'blog:index']
 
     def location(self, obj):
         return reverse(obj)

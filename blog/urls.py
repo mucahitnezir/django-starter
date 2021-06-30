@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, CategoryDetailView, post_delete
 
-app_name = 'post'
+app_name = 'blog'
 
 urlpatterns = (
     path('', PostListView.as_view(), name='index'),

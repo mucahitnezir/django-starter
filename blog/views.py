@@ -111,9 +111,9 @@ def post_delete(request, id):
     # Security control
     if request.user.is_superuser or post.user == request.user:
         post.delete()
-        return redirect('post:index')
+        return redirect('blog:index')
     else:
-        return redirect('post:index')
+        return redirect('blog:index')
 
 
 class CategoryDetailView(SingleObjectMixin, ListView):
