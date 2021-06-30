@@ -174,10 +174,10 @@ RECAPTCHA_USE_SSL = not DEBUG
 
 # URLs
 
-LOGIN_URL = 'account:login'
-LOGOUT_URL = 'account:logout'
+LOGIN_URL = 'auth:login'
+LOGOUT_URL = 'auth:logout'
 LOGIN_REDIRECT_URL = 'landing:home'
-LOGOUT_REDIRECT_URL = 'account:login'
+LOGOUT_REDIRECT_URL = 'auth:login'
 
 
 # Email

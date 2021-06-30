@@ -25,7 +25,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include('landing.urls')),
     path(_('blog/'), include('blog.urls')),
-    path(_('accounts/'), include('account.urls')),
+    path(_('auth/'), include('auth.urls')),
     path(_('portfolio/'), include('portfolio.urls')),
     path(_('service/'), include('service.urls')),
     prefix_default_language=True

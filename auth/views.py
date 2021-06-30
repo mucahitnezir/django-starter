@@ -1,7 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
@@ -14,7 +13,7 @@ from .forms import RegisterForm, EditProfileForm
 class RegisterView(SuccessMessageMixin, CreateView):
     model = User
     form_class = RegisterForm
-    template_name = 'account/register.html'
+    template_name = 'auth/register.html'
     success_url = reverse_lazy('landing:home')
     success_message = _('Successful signup')
     extra_context = {'title': _('Signup')}
@@ -39,8 +38,8 @@ class RegisterView(SuccessMessageMixin, CreateView):
 
 class ProfileEditView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = EditProfileForm
-    template_name = 'account/edit-profile.html'
-    success_url = reverse_lazy('account:edit-profile')
+    template_name = 'auth/edit-profile.html'
+    success_url = reverse_lazy('auth:edit-profile')
     success_message = _('Successful updating profile')
 
     def get_object(self, queryset=None):
