@@ -25,14 +25,7 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [])
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.str('PSQL_DB_NAME'),
-        'USER': env.str('PSQL_DB_USER'),
-        'PASSWORD': env.str('PSQL_DB_PASSWORD'),
-        'HOST': env.str('PSQL_DB_HOST', 'localhost'),
-        'PORT': env.str('PSQL_DB_PORT', '5432')
-    }
+    'default': env.db_url('DATABASE_URL'),
 }
 
 # Application definition
