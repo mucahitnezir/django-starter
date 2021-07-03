@@ -11,10 +11,9 @@ class TeamMember(models.Model):
     image = models.ImageField(_('Profile Photo'), null=True, blank=True)
     published_at = models.DateTimeField(_('Publishing Date'), auto_now_add=True, editable=False)
 
-    def get_full_name(self):
+    @property
+    def full_name(self):
         return "{} {}".format(self.first_name, self.last_name)
-
-    full_name = property(get_full_name)
 
     class Meta:
         db_table = 'team_members'
@@ -34,10 +33,9 @@ class Message(models.Model):
     message = models.TextField(_('Your Message'))
     published_at = models.DateTimeField(_('Publishing Date'), auto_now_add=True)
 
-    def get_full_name(self):
+    @property
+    def full_name(self):
         return "{} {}".format(self.first_name, self.last_name)
-
-    full_name = property(get_full_name)
 
     class Meta:
         db_table = 'contact_messages'
