@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from ckeditor.fields import RichTextField
@@ -30,21 +29,5 @@ class Portfolio(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        self.slug = self.get_unique_slug()
-        return super(Portfolio, self).save(*args, **kwargs)
-
     def get_absolute_url(self):
         return reverse('portfolio:detail', kwargs={'slug': self.slug})
-
-    def get_unique_slug(self):
-        if not self.slug:
-            slug = slugify(self.title.replace('ı', 'i'))
-            unique_slug = slug
-            counter = 1
-            while Portfolio.objects.filter(slug=unique_slug).exclude(pk=self.pk).exists():
-                unique_slug = "{}-{}".format(unique_slug, counter)
-                counter += 1
-            return unique_slug
-        else:
-            return self.slug

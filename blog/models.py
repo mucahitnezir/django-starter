@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django.utils.text import slugify
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import truncatechars
@@ -36,10 +35,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        self.slug = self.get_unique_slug()
-        return super(Post, self).save(*args, **kwargs)
-
     def get_absolute_url(self):
         # return "/post/{}".format(self.id)
         return reverse('blog:detail', kwargs={'slug': self.slug})
@@ -52,18 +47,6 @@ class Post(models.Model):
 
     def get_confirmed_comments(self):
         return self.comments.filter(is_confirmed=True)
-
-    def get_unique_slug(self):
-        if not self.slug:
-            slug = slugify(self.title.replace('ı', 'i'))
-            unique_slug = slug
-            counter = 1
-            while Post.objects.filter(slug=unique_slug).exclude(pk=self.pk).exists():
-                unique_slug = "{}-{}".format(unique_slug, counter)
-                counter += 1
-            return unique_slug
-        else:
-            return self.slug
 
 
 class Comment(models.Model):
